@@ -1,0 +1,51 @@
+{
+  "common": { "back": "뒤로", "close": "닫기", "save": "저장", "cancel": "취소", "loading": "불러오는 중..." },
+  "menu": { "play": "플레이", "leaderboard": "리더보드", "settings": "설정", "tagline": "쌓고. 지우고. 정복하라." },
+  "modes": {
+    "title": "모드 선택",
+    "marathon": "마라톤", "marathonDesc": "레벨 15까지 끝없이 오르기",
+    "sprint": "스프린트", "sprintDesc": "40줄을 최단 시간에 지우기",
+    "ultra": "울트라", "ultraDesc": "2분 안에 최고 점수",
+    "daily": "데일리", "dailyDesc": "오늘은 모두 같은 블록"
+  },
+  "game": {
+    "score": "점수", "level": "레벨", "lines": "줄", "time": "시간",
+    "hold": "홀드", "next": "다음", "pause": "일시정지", "resume": "계속",
+    "restart": "다시 시작", "quit": "나가기", "paused": "일시정지됨"
+  },
+  "results": {
+    "gameOver": "게임 오버", "newRecord": "신기록!", "score": "점수",
+    "lines": "줄", "level": "레벨", "time": "시간", "submit": "점수 제출",
+    "submitted": "제출됨!", "retry": "다시 시도", "menu": "메뉴"
+  },
+  "leaderboard": { "title": "리더보드", "rank": "순위", "player": "플레이어", "score": "점수", "you": "나", "live": "실시간" },
+  "onboarding": {
+    "chooseAvatar": "아바타 선택",
+    "welcome": "BlockFall에 오신 것을 환영합니다", "subtitle": "프로필을 설정하세요",
+    "username": "사용자 이름", "usernamePlaceholder": "이름을 선택하세요",
+    "country": "국가", "start": "게임 시작", "usernameError": "2~16자"
+  },
+  "settings": {
+    "title": "설정", "language": "언어", "theme": "테마", "handedness": "조작 방향",
+    "left": "왼쪽", "right": "오른쪽", "sfx": "효과음", "music": "음악",
+    "reducedMotion": "모션 줄이기", "resetProfile": "프로필 초기화"
+  },
+  "achievements": {
+    "title": "업적", "menu": "업적", "unlocked": "달성됨",
+    "completed": "{{count}} / {{total}} 달성", "unlockedToast": "업적 달성!", "locked": "잠김",
+    "items": {
+      "first_drop": { "title": "첫 낙하", "desc": "첫 게임 완료" },
+      "warmed_up": { "title": "워밍업", "desc": "10게임 플레이" },
+      "veteran": { "title": "블록 베테랑", "desc": "50게임 플레이" },
+      "century": { "title": "센추리", "desc": "총 100줄 지우기" },
+      "line_cook": { "title": "라인 요리사", "desc": "총 1,000줄 지우기" },
+      "high_roller": { "title": "하이 롤러", "desc": "아무 모드에서 50,000점" },
+      "tetris": { "title": "테트리스!", "desc": "한 번에 4줄 지우기" },
+      "spin_doctor": { "title": "스핀 마스터", "desc": "T-스핀 성공" },
+      "combo_king": { "title": "콤보 왕", "desc": "5+ 콤보 달성" },
+      "marathoner": { "title": "마라토너", "desc": "레벨 15 도달" },
+      "speed_demon": { "title": "스피드 데몬", "desc": "스프린트 90초 이내 완료" },
+      "daily_devotion": { "title": "매일의 헌신", "desc": "데일리 3일 연속 플레이" }
+    }
+  }
+}

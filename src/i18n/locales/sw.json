@@ -1,0 +1,51 @@
+{
+  "common": { "back": "Rudi", "close": "Funga", "save": "Hifadhi", "cancel": "Ghairi", "loading": "Inapakia..." },
+  "menu": { "play": "Cheza", "leaderboard": "Ubao wa Viongozi", "settings": "Mipangilio", "tagline": "Panga. Safisha. Shinda." },
+  "modes": {
+    "title": "Chagua Hali",
+    "marathon": "Marathoni", "marathonDesc": "Kupanda bila mwisho hadi ngazi 15",
+    "sprint": "Sprinti", "sprintDesc": "Safisha mistari 40 kwa kasi zaidi",
+    "ultra": "Ultra", "ultraDesc": "Alama za juu kwa dakika 2",
+    "daily": "Kila Siku", "dailyDesc": "Vipande sawa kwa kila mtu leo"
+  },
+  "game": {
+    "score": "Alama", "level": "Ngazi", "lines": "Mistari", "time": "Muda",
+    "hold": "Shika", "next": "Inayofuata", "pause": "Simamisha", "resume": "Endelea",
+    "restart": "Anza upya", "quit": "Toka", "paused": "Imesimamishwa"
+  },
+  "results": {
+    "gameOver": "Mchezo Umeisha", "newRecord": "Rekodi Mpya!", "score": "Alama",
+    "lines": "Mistari", "level": "Ngazi", "time": "Muda", "submit": "Wasilisha Alama",
+    "submitted": "Imewasilishwa!", "retry": "Jaribu tena", "menu": "Menyu"
+  },
+  "leaderboard": { "title": "Ubao wa Viongozi", "rank": "Nafasi", "player": "Mchezaji", "score": "Alama", "you": "Wewe", "live": "Moja kwa moja" },
+  "onboarding": {
+    "chooseAvatar": "Chagua avatar",
+    "welcome": "Karibu BlockFall", "subtitle": "Sanidi wasifu wako",
+    "username": "Jina la mtumiaji", "usernamePlaceholder": "Chagua jina",
+    "country": "Nchi", "start": "Anza Kucheza", "usernameError": "Herufi 2-16"
+  },
+  "settings": {
+    "title": "Mipangilio", "language": "Lugha", "theme": "Mandhari", "handedness": "Upande wa Kudhibiti",
+    "left": "Kushoto", "right": "Kulia", "sfx": "Athari za Sauti", "music": "Muziki",
+    "reducedMotion": "Punguza Mwendo", "resetProfile": "Weka upya Wasifu"
+  },
+  "achievements": {
+    "title": "Mafanikio", "menu": "Mafanikio", "unlocked": "Imefunguliwa",
+    "completed": "{{count}} / {{total}} yamefunguliwa", "unlockedToast": "Mafanikio Yamefunguliwa!", "locked": "Imefungwa",
+    "items": {
+      "first_drop": { "title": "Anguko la Kwanza", "desc": "Maliza mchezo wako wa kwanza" },
+      "warmed_up": { "title": "Kupasha Joto", "desc": "Cheza michezo 10" },
+      "veteran": { "title": "Mkongwe wa Vizuizi", "desc": "Cheza michezo 50" },
+      "century": { "title": "Mia", "desc": "Safisha jumla ya mistari 100" },
+      "line_cook": { "title": "Mpishi wa Mistari", "desc": "Safisha jumla ya mistari 1,000" },
+      "high_roller": { "title": "Mchezaji Mkubwa", "desc": "Pata alama 50,000 katika hali yoyote" },
+      "tetris": { "title": "Tetris!", "desc": "Safisha mistari 4 kwa pamoja" },
+      "spin_doctor": { "title": "Bingwa wa Kuzungusha", "desc": "Fanya T-spin" },
+      "combo_king": { "title": "Mfalme wa Kombo", "desc": "Fikia kombo 5+" },
+      "marathoner": { "title": "Mkimbiaji wa Marathoni", "desc": "Fikia ngazi 15" },
+      "speed_demon": { "title": "Shetani wa Kasi", "desc": "Maliza Sprinti chini ya sekunde 90" },
+      "daily_devotion": { "title": "Kujitolea kwa Kila Siku", "desc": "Cheza Kila Siku kwa siku 3 mfululizo" }
+    }
+  }
+}

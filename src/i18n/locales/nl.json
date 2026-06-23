@@ -1,0 +1,51 @@
+{
+  "common": { "back": "Terug", "close": "Sluiten", "save": "Opslaan", "cancel": "Annuleren", "loading": "Laden..." },
+  "menu": { "play": "Spelen", "leaderboard": "Ranglijst", "settings": "Instellingen", "tagline": "Stapel. Wis. Verover." },
+  "modes": {
+    "title": "Modus kiezen",
+    "marathon": "Marathon", "marathonDesc": "Eindeloze klim naar niveau 15",
+    "sprint": "Sprint", "sprintDesc": "Wis 40 lijnen zo snel mogelijk",
+    "ultra": "Ultra", "ultraDesc": "Max score in 2 minuten",
+    "daily": "Dagelijks", "dailyDesc": "Vandaag dezelfde stukken voor iedereen"
+  },
+  "game": {
+    "score": "Score", "level": "Niveau", "lines": "Lijnen", "time": "Tijd",
+    "hold": "Vasthouden", "next": "Volgende", "pause": "Pauze", "resume": "Hervatten",
+    "restart": "Herstart", "quit": "Stoppen", "paused": "Gepauzeerd"
+  },
+  "results": {
+    "gameOver": "Game over", "newRecord": "Nieuw record!", "score": "Score",
+    "lines": "Lijnen", "level": "Niveau", "time": "Tijd", "submit": "Score indienen",
+    "submitted": "Ingediend!", "retry": "Opnieuw", "menu": "Menu"
+  },
+  "leaderboard": { "title": "Ranglijst", "rank": "Rang", "player": "Speler", "score": "Score", "you": "Jij", "live": "Live" },
+  "onboarding": {
+    "chooseAvatar": "Kies avatar",
+    "welcome": "Welkom bij BlockFall", "subtitle": "Stel je profiel in",
+    "username": "Gebruikersnaam", "usernamePlaceholder": "Kies een naam",
+    "country": "Land", "start": "Begin met spelen", "usernameError": "2-16 tekens"
+  },
+  "settings": {
+    "title": "Instellingen", "language": "Taal", "theme": "Thema", "handedness": "Bedieningszijde",
+    "left": "Links", "right": "Rechts", "sfx": "Geluidseffecten", "music": "Muziek",
+    "reducedMotion": "Minder beweging", "resetProfile": "Profiel resetten"
+  },
+  "achievements": {
+    "title": "Prestaties", "menu": "Prestaties", "unlocked": "Ontgrendeld",
+    "completed": "{{count}} / {{total}} ontgrendeld", "unlockedToast": "Prestatie ontgrendeld!", "locked": "Vergrendeld",
+    "items": {
+      "first_drop": { "title": "Eerste val", "desc": "Voltooi je eerste spel" },
+      "warmed_up": { "title": "Opgewarmd", "desc": "Speel 10 spellen" },
+      "veteran": { "title": "Blokveteraan", "desc": "Speel 50 spellen" },
+      "century": { "title": "Honderd", "desc": "Wis 100 lijnen in totaal" },
+      "line_cook": { "title": "Lijnenkok", "desc": "Wis 1.000 lijnen in totaal" },
+      "high_roller": { "title": "Hoogvlieger", "desc": "Scoor 50.000 in een modus" },
+      "tetris": { "title": "Tetris!", "desc": "Wis 4 lijnen tegelijk" },
+      "spin_doctor": { "title": "Spindokter", "desc": "Voer een T-spin uit" },
+      "combo_king": { "title": "Combokoning", "desc": "Bereik een combo van 5+" },
+      "marathoner": { "title": "Marathonloper", "desc": "Bereik niveau 15" },
+      "speed_demon": { "title": "Snelheidsduivel", "desc": "Voltooi Sprint onder 90 s" },
+      "daily_devotion": { "title": "Dagelijkse toewijding", "desc": "Speel 3 dagen op rij de Dagelijkse" }
+    }
+  }
+}

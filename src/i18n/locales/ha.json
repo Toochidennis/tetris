@@ -1,0 +1,51 @@
+{
+  "common": { "back": "Koma", "close": "Rufe", "save": "Ajiye", "cancel": "Soke", "loading": "Ana lodi..." },
+  "menu": { "play": "Yi Wasa", "leaderboard": "Allon Jagora", "settings": "Saituna", "tagline": "Tara. Share. Ci nasara." },
+  "modes": {
+    "title": "Zaɓi Yanayi",
+    "marathon": "Maraton", "marathonDesc": "Hawan da ba ya ƙarewa zuwa mataki 15",
+    "sprint": "Sprint", "sprintDesc": "Share layuka 40 da sauri",
+    "ultra": "Ultra", "ultraDesc": "Mafi yawan maki cikin minti 2",
+    "daily": "Na Yau", "dailyDesc": "Guda iri ɗaya ga kowa yau"
+  },
+  "game": {
+    "score": "Maki", "level": "Mataki", "lines": "Layuka", "time": "Lokaci",
+    "hold": "Riƙe", "next": "Na gaba", "pause": "Tsaya", "resume": "Ci gaba",
+    "restart": "Sake farawa", "quit": "Fita", "paused": "An tsayar"
+  },
+  "results": {
+    "gameOver": "Wasan Ya Ƙare", "newRecord": "Sabon Rikodi!", "score": "Maki",
+    "lines": "Layuka", "level": "Mataki", "time": "Lokaci", "submit": "Aika Maki",
+    "submitted": "An aika!", "retry": "Sake gwadawa", "menu": "Menu"
+  },
+  "leaderboard": { "title": "Allon Jagora", "rank": "Matsayi", "player": "Ɗan wasa", "score": "Maki", "you": "Kai", "live": "Kai tsaye" },
+  "onboarding": {
+    "chooseAvatar": "Zaɓi avatar",
+    "welcome": "Barka da zuwa BlockFall", "subtitle": "Saita bayanin ka",
+    "username": "Sunan mai amfani", "usernamePlaceholder": "Zaɓi suna",
+    "country": "Ƙasa", "start": "Fara Wasa", "usernameError": "Haruffa 2-16"
+  },
+  "settings": {
+    "title": "Saituna", "language": "Harshe", "theme": "Jigo", "handedness": "Gefen Sarrafawa",
+    "left": "Hagu", "right": "Dama", "sfx": "Sautin Sauti", "music": "Kiɗa",
+    "reducedMotion": "Rage Motsi", "resetProfile": "Sake Saita Bayani"
+  },
+  "achievements": {
+    "title": "Nasarori", "menu": "Nasarori", "unlocked": "An buɗe",
+    "completed": "An buɗe {{count}} / {{total}}", "unlockedToast": "An Buɗe Nasara!", "locked": "A kulle",
+    "items": {
+      "first_drop": { "title": "Faɗuwa ta Farko", "desc": "Kammala wasanka na farko" },
+      "warmed_up": { "title": "Ɗumama", "desc": "Yi wasanni 10" },
+      "veteran": { "title": "Tsohon Soja na Bulo", "desc": "Yi wasanni 50" },
+      "century": { "title": "Ɗari", "desc": "Share layuka 100 gaba ɗaya" },
+      "line_cook": { "title": "Mai Dafa Layi", "desc": "Share layuka 1,000 gaba ɗaya" },
+      "high_roller": { "title": "Babban Ɗan wasa", "desc": "Sami maki 50,000 a kowane yanayi" },
+      "tetris": { "title": "Tetris!", "desc": "Share layuka 4 lokaci ɗaya" },
+      "spin_doctor": { "title": "Gwanin Juyawa", "desc": "Yi T-spin" },
+      "combo_king": { "title": "Sarkin Kombo", "desc": "Kai kombo 5+" },
+      "marathoner": { "title": "Mai Maraton", "desc": "Kai mataki 15" },
+      "speed_demon": { "title": "Aljanin Gudu", "desc": "Kammala Sprint cikin sakan 90" },
+      "daily_devotion": { "title": "Sadaukarwa ta Yau", "desc": "Yi wasa na Yau kwana 3 jere" }
+    }
+  }
+}

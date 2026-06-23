@@ -1,0 +1,51 @@
+{
+  "common": { "back": "戻る", "close": "閉じる", "save": "保存", "cancel": "キャンセル", "loading": "読み込み中..." },
+  "menu": { "play": "プレイ", "leaderboard": "ランキング", "settings": "設定", "tagline": "積んで。消して。制覇せよ。" },
+  "modes": {
+    "title": "モード選択",
+    "marathon": "マラソン", "marathonDesc": "レベル15まで無限に登る",
+    "sprint": "スプリント", "sprintDesc": "40ラインを最速で消す",
+    "ultra": "ウルトラ", "ultraDesc": "2分間で最高得点",
+    "daily": "デイリー", "dailyDesc": "今日は全員同じピース"
+  },
+  "game": {
+    "score": "スコア", "level": "レベル", "lines": "ライン", "time": "タイム",
+    "hold": "ホールド", "next": "ネクスト", "pause": "一時停止", "resume": "再開",
+    "restart": "リスタート", "quit": "やめる", "paused": "一時停止中"
+  },
+  "results": {
+    "gameOver": "ゲームオーバー", "newRecord": "新記録！", "score": "スコア",
+    "lines": "ライン", "level": "レベル", "time": "タイム", "submit": "スコアを送信",
+    "submitted": "送信しました！", "retry": "リトライ", "menu": "メニュー"
+  },
+  "leaderboard": { "title": "ランキング", "rank": "順位", "player": "プレイヤー", "score": "スコア", "you": "あなた", "live": "ライブ" },
+  "onboarding": {
+    "chooseAvatar": "アバターを選択",
+    "welcome": "BlockFall へようこそ", "subtitle": "プロフィールを設定",
+    "username": "ユーザー名", "usernamePlaceholder": "ユーザー名を選択",
+    "country": "国", "start": "プレイ開始", "usernameError": "2〜16文字"
+  },
+  "settings": {
+    "title": "設定", "language": "言語", "theme": "テーマ", "handedness": "操作する側",
+    "left": "左", "right": "右", "sfx": "効果音", "music": "音楽",
+    "reducedMotion": "モーションを減らす", "resetProfile": "プロフィールをリセット"
+  },
+  "achievements": {
+    "title": "実績", "menu": "実績", "unlocked": "解除済み",
+    "completed": "{{count}} / {{total}} 解除", "unlockedToast": "実績解除！", "locked": "未解除",
+    "items": {
+      "first_drop": { "title": "初ドロップ", "desc": "最初のゲームを終える" },
+      "warmed_up": { "title": "ウォームアップ", "desc": "10ゲームをプレイ" },
+      "veteran": { "title": "ブロックの達人", "desc": "50ゲームをプレイ" },
+      "century": { "title": "センチュリー", "desc": "合計100ライン消す" },
+      "line_cook": { "title": "ラインの料理人", "desc": "合計1,000ライン消す" },
+      "high_roller": { "title": "ハイローラー", "desc": "いずれかのモードで50,000点" },
+      "tetris": { "title": "テトリス！", "desc": "一度に4ライン消す" },
+      "spin_doctor": { "title": "スピンの達人", "desc": "Tスピンを決める" },
+      "combo_king": { "title": "コンボの王", "desc": "5以上のコンボを達成" },
+      "marathoner": { "title": "マラソンランナー", "desc": "レベル15に到達" },
+      "speed_demon": { "title": "スピードの悪魔", "desc": "スプリントを90秒以内で" },
+      "daily_devotion": { "title": "毎日の献身", "desc": "デイリーを3日連続でプレイ" }
+    }
+  }
+}
