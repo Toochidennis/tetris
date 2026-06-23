@@ -1,0 +1,51 @@
+{
+  "common": { "back": "返回", "close": "关闭", "save": "保存", "cancel": "取消", "loading": "加载中..." },
+  "menu": { "play": "开始", "leaderboard": "排行榜", "settings": "设置", "tagline": "堆叠。消除。征服。" },
+  "modes": {
+    "title": "选择模式",
+    "marathon": "马拉松", "marathonDesc": "无尽攀升至15级",
+    "sprint": "冲刺", "sprintDesc": "最快速度消除40行",
+    "ultra": "极限", "ultraDesc": "2分钟内获得最高分",
+    "daily": "每日", "dailyDesc": "今天所有人方块相同"
+  },
+  "game": {
+    "score": "分数", "level": "等级", "lines": "行数", "time": "时间",
+    "hold": "暂存", "next": "下一个", "pause": "暂停", "resume": "继续",
+    "restart": "重新开始", "quit": "退出", "paused": "已暂停"
+  },
+  "results": {
+    "gameOver": "游戏结束", "newRecord": "新纪录！", "score": "分数",
+    "lines": "行数", "level": "等级", "time": "时间", "submit": "提交分数",
+    "submitted": "已提交！", "retry": "重试", "menu": "菜单"
+  },
+  "leaderboard": { "title": "排行榜", "rank": "排名", "player": "玩家", "score": "分数", "you": "你", "live": "实时" },
+  "onboarding": {
+    "chooseAvatar": "选择头像",
+    "welcome": "欢迎来到 BlockFall", "subtitle": "设置你的个人资料",
+    "username": "用户名", "usernamePlaceholder": "选择一个用户名",
+    "country": "国家", "start": "开始游戏", "usernameError": "2-16 个字符"
+  },
+  "settings": {
+    "title": "设置", "language": "语言", "theme": "主题", "handedness": "控制侧",
+    "left": "左", "right": "右", "sfx": "音效", "music": "音乐",
+    "reducedMotion": "减少动态效果", "resetProfile": "重置资料"
+  },
+  "achievements": {
+    "title": "成就", "menu": "成就", "unlocked": "已解锁",
+    "completed": "{{count}} / {{total}} 已解锁", "unlockedToast": "成就解锁！", "locked": "未解锁",
+    "items": {
+      "first_drop": { "title": "初次落下", "desc": "完成你的第一局" },
+      "warmed_up": { "title": "热身", "desc": "玩 10 局" },
+      "veteran": { "title": "方块老兵", "desc": "玩 50 局" },
+      "century": { "title": "百行", "desc": "累计消除 100 行" },
+      "line_cook": { "title": "消行大厨", "desc": "累计消除 1,000 行" },
+      "high_roller": { "title": "高手", "desc": "任意模式得 50,000 分" },
+      "tetris": { "title": "Tetris！", "desc": "一次消除 4 行" },
+      "spin_doctor": { "title": "旋转大师", "desc": "完成一次 T-spin" },
+      "combo_king": { "title": "连击之王", "desc": "达成 5+ 连击" },
+      "marathoner": { "title": "马拉松选手", "desc": "达到 15 级" },
+      "speed_demon": { "title": "速度恶魔", "desc": "90 秒内完成冲刺" },
+      "daily_devotion": { "title": "每日坚持", "desc": "连续 3 天玩每日挑战" }
+    }
+  }
+}

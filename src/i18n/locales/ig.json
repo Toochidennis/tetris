@@ -1,0 +1,51 @@
+{
+  "common": { "back": "Laghachi", "close": "Mechie", "save": "Chekwaa", "cancel": "Kagbuo", "loading": "Na-ebu..." },
+  "menu": { "play": "Gwuo", "leaderboard": "Bọọdụ Ndị Isi", "settings": "Ntọala", "tagline": "Tụkọta. Hichapụ. Merie." },
+  "modes": {
+    "title": "Họrọ Ụdị",
+    "marathon": "Marathon", "marathonDesc": "Ịrịgo na-akwụsịghị ruo ọkwa 15",
+    "sprint": "Sprint", "sprintDesc": "Hichapụ ahịrị 40 ngwa ngwa",
+    "ultra": "Ultra", "ultraDesc": "Akara kachasị na nkeji 2",
+    "daily": "Kwa Ụbọchị", "dailyDesc": "Otu mpempe maka onye ọ bụla taa"
+  },
+  "game": {
+    "score": "Akara", "level": "Ọkwa", "lines": "Ahịrị", "time": "Oge",
+    "hold": "Jide", "next": "Osote", "pause": "Kwụsị", "resume": "Gaa n'ihu",
+    "restart": "Malite ọzọ", "quit": "Pụọ", "paused": "Akwụsịla"
+  },
+  "results": {
+    "gameOver": "Egwuregwu Agwụla", "newRecord": "Ndekọ Ọhụrụ!", "score": "Akara",
+    "lines": "Ahịrị", "level": "Ọkwa", "time": "Oge", "submit": "Zipu Akara",
+    "submitted": "Ezigara!", "retry": "Nwaa ọzọ", "menu": "Menu"
+  },
+  "leaderboard": { "title": "Bọọdụ Ndị Isi", "rank": "Ọnọdụ", "player": "Onye egwuregwu", "score": "Akara", "you": "Gị", "live": "Ozugbo" },
+  "onboarding": {
+    "chooseAvatar": "Họrọ avatar",
+    "welcome": "Nnọọ na BlockFall", "subtitle": "Hazie profaịlụ gị",
+    "username": "Aha njirimara", "usernamePlaceholder": "Họrọ aha",
+    "country": "Obodo", "start": "Malite Igwu", "usernameError": "Mkpụrụedemede 2-16"
+  },
+  "settings": {
+    "title": "Ntọala", "language": "Asụsụ", "theme": "Isiokwu", "handedness": "Akụkụ Njikwa",
+    "left": "Ekpe", "right": "Aka nri", "sfx": "Mmetụta Ụda", "music": "Egwu",
+    "reducedMotion": "Belata Mmegharị", "resetProfile": "Tọgharịa Profaịlụ"
+  },
+  "achievements": {
+    "title": "Mmezu", "menu": "Mmezu", "unlocked": "Emeghere",
+    "completed": "Emeghere {{count}} / {{total}}", "unlockedToast": "Emeghere Mmezu!", "locked": "Akpọchiri",
+    "items": {
+      "first_drop": { "title": "Ọdịda Mbụ", "desc": "Mechaa egwuregwu mbụ gị" },
+      "warmed_up": { "title": "Ịkpọ Ọkụ", "desc": "Gwuo egwuregwu 10" },
+      "veteran": { "title": "Dike Blọk", "desc": "Gwuo egwuregwu 50" },
+      "century": { "title": "Narị", "desc": "Hichapụ ahịrị 100 na mkpokọta" },
+      "line_cook": { "title": "Onye Isi Nri Ahịrị", "desc": "Hichapụ ahịrị 1,000 na mkpokọta" },
+      "high_roller": { "title": "Onye Ọkpụkpọ Ukwu", "desc": "Nweta akara 50,000 n'ụdị ọ bụla" },
+      "tetris": { "title": "Tetris!", "desc": "Hichapụ ahịrị 4 n'otu oge" },
+      "spin_doctor": { "title": "Ọkachamara Ntụgharị", "desc": "Mee T-spin" },
+      "combo_king": { "title": "Eze Kombo", "desc": "Ruo kombo 5+" },
+      "marathoner": { "title": "Onye Marathon", "desc": "Ruo ọkwa 15" },
+      "speed_demon": { "title": "Mmụọ Ọsọ", "desc": "Mechaa Sprint n'okpuru sekọnd 90" },
+      "daily_devotion": { "title": "Nraranye Kwa Ụbọchị", "desc": "Gwuo nke Kwa Ụbọchị ụbọchị 3 n'usoro" }
+    }
+  }
+}

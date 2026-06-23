@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root,
+[data-theme="neon-dark"] {
+  --bg-base: #0a0a0f;
+  --bg-grad: radial-gradient(120% 120% at 50% 0%, #16131f 0%, #0a0a0f 60%);
+  --bg-panel: rgba(255, 255, 255, 0.04);
+  --bg-panel-border: rgba(255, 255, 255, 0.08);
+  --grid-line: rgba(255, 255, 255, 0.05);
+  --grid-cell-empty: rgba(255, 255, 255, 0.02);
+  --text-primary: #f5f7ff;
+  --text-muted: #8a8fa3;
+  --accent: #6c5ce7;
+  --accent-glow: #8b7bff;
+  --success: #2ecc71;
+  --danger: #ff4757;
+
+  --p-I: #2bd9ff; --p-I-glow: #7be9ff;
+  --p-O: #ffd23f; --p-O-glow: #ffe585;
+  --p-T: #b14bff; --p-T-glow: #d08bff;
+  --p-S: #38e36b; --p-S-glow: #79f39c;
+  --p-Z: #ff4d6d; --p-Z-glow: #ff8499;
+  --p-J: #4d6bff; --p-J-glow: #8597ff;
+  --p-L: #ff8a3d; --p-L-glow: #ffb077;
+}
+
+[data-theme="classic"] {
+  --bg-base: #0c1014;
+  --bg-grad: linear-gradient(180deg, #11161c, #0c1014);
+  --bg-panel: rgba(255, 255, 255, 0.05);
+  --bg-panel-border: rgba(255, 255, 255, 0.1);
+  --grid-line: rgba(255, 255, 255, 0.06);
+  --grid-cell-empty: rgba(255, 255, 255, 0.02);
+  --text-primary: #e8edf2;
+  --text-muted: #7e8a96;
+  --accent: #00b894;
+  --accent-glow: #00d9aa;
+  --success: #00b894;
+  --danger: #d63031;
+  --p-I: #00bcd4; --p-I-glow: #00bcd4;
+  --p-O: #ffeb3b; --p-O-glow: #ffeb3b;
+  --p-T: #9c27b0; --p-T-glow: #9c27b0;
+  --p-S: #4caf50; --p-S-glow: #4caf50;
+  --p-Z: #f44336; --p-Z-glow: #f44336;
+  --p-J: #3f51b5; --p-J-glow: #3f51b5;
+  --p-L: #ff9800; --p-L-glow: #ff9800;
+}
+
+[data-theme="minimal-light"] {
+  --bg-base: #f4f5f8;
+  --bg-grad: linear-gradient(180deg, #ffffff, #eef0f4);
+  --bg-panel: rgba(0, 0, 0, 0.03);
+  --bg-panel-border: rgba(0, 0, 0, 0.08);
+  --grid-line: rgba(0, 0, 0, 0.06);
+  --grid-cell-empty: rgba(0, 0, 0, 0.02);
+  --text-primary: #1a1d24;
+  --text-muted: #6b7280;
+  --accent: #5b5bd6;
+  --accent-glow: #7c7cf0;
+  --success: #16a34a;
+  --danger: #dc2626;
+  --p-I: #06b6d4; --p-I-glow: #06b6d4;
+  --p-O: #eab308; --p-O-glow: #eab308;
+  --p-T: #a855f7; --p-T-glow: #a855f7;
+  --p-S: #22c55e; --p-S-glow: #22c55e;
+  --p-Z: #ef4444; --p-Z-glow: #ef4444;
+  --p-J: #3b82f6; --p-J-glow: #3b82f6;
+  --p-L: #f97316; --p-L-glow: #f97316;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--bg-base);
+  background-image: var(--bg-grad);
+  color: var(--text-primary);
+  font-family: "Sora", "Space Grotesk", system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.glass {
+  background: var(--bg-panel);
+  border: 1px solid var(--bg-panel-border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 16px;
+}
+
+.tabular { font-variant-numeric: tabular-nums; }
+
+.btn {
+  position: relative;
+  border: 1px solid var(--bg-panel-border);
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  color: var(--text-primary);
+  border-radius: 14px;
+  padding: 13px 18px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 200ms ease, border-color 200ms ease, background 200ms ease;
+}
+.btn:hover {
+  border-color: color-mix(in srgb, var(--accent-glow) 65%, transparent);
+  box-shadow: 0 0 18px -4px var(--accent-glow);
+}
+.btn:active { transform: scale(0.96); }
+.btn:disabled { opacity: 0.45; cursor: default; box-shadow: none; }
+.btn-primary {
+  border: 1px solid color-mix(in srgb, white 25%, transparent);
+  background: linear-gradient(135deg, var(--accent), var(--accent-glow));
+  color: white;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  box-shadow: 0 0 24px -4px var(--accent-glow), 0 8px 20px -8px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,0.3);
+}
+.btn-primary:hover {
+  box-shadow: 0 0 32px -2px var(--accent-glow), 0 10px 24px -8px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,0.35);
+}
+.btn-danger {
+  border: 1px solid color-mix(in srgb, var(--danger) 60%, transparent);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--danger) 22%, transparent), color-mix(in srgb, var(--danger) 8%, transparent));
+  color: color-mix(in srgb, var(--danger) 70%, white);
+}
+.btn-danger:hover { box-shadow: 0 0 20px -4px var(--danger); border-color: var(--danger); }

@@ -1,0 +1,51 @@
+{
+  "common": { "back": "Retour", "close": "Fermer", "save": "Enregistrer", "cancel": "Annuler", "loading": "Chargement..." },
+  "menu": { "play": "Jouer", "leaderboard": "Classement", "settings": "Paramètres", "tagline": "Empile. Élimine. Domine." },
+  "modes": {
+    "title": "Choisir le mode",
+    "marathon": "Marathon", "marathonDesc": "Montée infinie jusqu'au niveau 15",
+    "sprint": "Sprint", "sprintDesc": "Effacez 40 lignes au plus vite",
+    "ultra": "Ultra", "ultraDesc": "Score max en 2 minutes",
+    "daily": "Quotidien", "dailyDesc": "Mêmes pièces pour tous aujourd'hui"
+  },
+  "game": {
+    "score": "Score", "level": "Niveau", "lines": "Lignes", "time": "Temps",
+    "hold": "Réserve", "next": "Suivant", "pause": "Pause", "resume": "Reprendre",
+    "restart": "Recommencer", "quit": "Quitter", "paused": "En pause"
+  },
+  "results": {
+    "gameOver": "Partie terminée", "newRecord": "Nouveau record !", "score": "Score",
+    "lines": "Lignes", "level": "Niveau", "time": "Temps", "submit": "Envoyer le score",
+    "submitted": "Envoyé !", "retry": "Réessayer", "menu": "Menu"
+  },
+  "leaderboard": { "title": "Classement", "rank": "Rang", "player": "Joueur", "score": "Score", "you": "Vous", "live": "En direct" },
+  "onboarding": {
+    "chooseAvatar": "Choisir un avatar",
+    "welcome": "Bienvenue sur BlockFall", "subtitle": "Configurez votre profil",
+    "username": "Nom d'utilisateur", "usernamePlaceholder": "Choisissez un nom",
+    "country": "Pays", "start": "Commencer à jouer", "usernameError": "2 à 16 caractères"
+  },
+  "settings": {
+    "title": "Paramètres", "language": "Langue", "theme": "Thème", "handedness": "Côté des commandes",
+    "left": "Gauche", "right": "Droite", "sfx": "Effets sonores", "music": "Musique",
+    "reducedMotion": "Animations réduites", "resetProfile": "Réinitialiser le profil"
+  },
+  "achievements": {
+    "title": "Succès", "menu": "Succès", "unlocked": "Débloqué",
+    "completed": "{{count}} / {{total}} débloqués", "unlockedToast": "Succès débloqué !", "locked": "Verrouillé",
+    "items": {
+      "first_drop": { "title": "Première chute", "desc": "Terminez votre première partie" },
+      "warmed_up": { "title": "Échauffement", "desc": "Jouez 10 parties" },
+      "veteran": { "title": "Vétéran des blocs", "desc": "Jouez 50 parties" },
+      "century": { "title": "Centaine", "desc": "Effacez 100 lignes au total" },
+      "line_cook": { "title": "Cuisinier de lignes", "desc": "Effacez 1 000 lignes au total" },
+      "high_roller": { "title": "Gros joueur", "desc": "Marquez 50 000 dans un mode" },
+      "tetris": { "title": "Tetris !", "desc": "Effacez 4 lignes d'un coup" },
+      "spin_doctor": { "title": "Maître du pivot", "desc": "Réussissez un T-spin" },
+      "combo_king": { "title": "Roi du combo", "desc": "Atteignez un combo de 5+" },
+      "marathoner": { "title": "Marathonien", "desc": "Atteignez le niveau 15" },
+      "speed_demon": { "title": "Démon de vitesse", "desc": "Terminez le Sprint en moins de 90 s" },
+      "daily_devotion": { "title": "Dévotion quotidienne", "desc": "Jouez au Quotidien 3 jours de suite" }
+    }
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "common": { "back": "Back", "close": "Close", "save": "Save", "cancel": "Cancel", "loading": "Loading..." },
+  "menu": {
+    "play": "Play",
+    "leaderboard": "Leaderboard",
+    "settings": "Settings",
+    "tagline": "Stack. Clear. Conquer."
+  },
+  "modes": {
+    "title": "Select Mode",
+    "marathon": "Marathon",
+    "marathonDesc": "Endless climb to level 15",
+    "sprint": "Sprint",
+    "sprintDesc": "Clear 40 lines, fastest time",
+    "ultra": "Ultra",
+    "ultraDesc": "Max score in 2 minutes",
+    "daily": "Daily",
+    "dailyDesc": "Same pieces for everyone today"
+  },
+  "game": {
+    "score": "Score",
+    "level": "Level",
+    "lines": "Lines",
+    "time": "Time",
+    "hold": "Hold",
+    "next": "Next",
+    "pause": "Pause",
+    "resume": "Resume",
+    "restart": "Restart",
+    "quit": "Quit",
+    "paused": "Paused"
+  },
+  "results": {
+    "gameOver": "Game Over",
+    "newRecord": "New Record!",
+    "score": "Score",
+    "lines": "Lines",
+    "level": "Level",
+    "time": "Time",
+    "submit": "Submit Score",
+    "submitted": "Submitted!",
+    "retry": "Retry",
+    "menu": "Menu"
+  },
+  "leaderboard": {
+    "title": "Leaderboard",
+    "rank": "Rank",
+    "player": "Player",
+    "score": "Score",
+    "you": "You",
+    "live": "Live"
+  },
+  "onboarding": {
+    "chooseAvatar": "Choose Avatar",
+    "welcome": "Welcome to BlockFall",
+    "subtitle": "Set up your player profile",
+    "username": "Username",
+    "usernamePlaceholder": "Choose a username",
+    "country": "Country",
+    "start": "Start Playing",
+    "usernameError": "2-16 characters"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "handedness": "Control Side",
+    "left": "Left",
+    "right": "Right",
+    "sfx": "Sound Effects",
+    "music": "Music",
+    "reducedMotion": "Reduced Motion",
+    "resetProfile": "Reset Profile"
+  },
+  "achievements": {
+    "title": "Achievements",
+    "menu": "Achievements",
+    "unlocked": "Unlocked",
+    "completed": "{{count}} / {{total}} unlocked",
+    "unlockedToast": "Achievement Unlocked!",
+    "locked": "Locked",
+    "items": {
+      "first_drop": { "title": "First Drop", "desc": "Finish your first game" },
+      "warmed_up": { "title": "Getting Warmed Up", "desc": "Play 10 games" },
+      "veteran": { "title": "Block Veteran", "desc": "Play 50 games" },
+      "century": { "title": "Century", "desc": "Clear 100 lines total" },
+      "line_cook": { "title": "Line Cook", "desc": "Clear 1,000 lines total" },
+      "high_roller": { "title": "High Roller", "desc": "Score 50,000 in any mode" },
+      "tetris": { "title": "Tetris!", "desc": "Clear 4 lines at once" },
+      "spin_doctor": { "title": "Spin Doctor", "desc": "Land a T-spin" },
+      "combo_king": { "title": "Combo King", "desc": "Reach a 5+ combo" },
+      "marathoner": { "title": "Marathoner", "desc": "Reach Level 15" },
+      "speed_demon": { "title": "Speed Demon", "desc": "Finish Sprint under 90s" },
+      "daily_devotion": { "title": "Daily Devotion", "desc": "Play the Daily 3 days running" }
+    }
+  }
+}

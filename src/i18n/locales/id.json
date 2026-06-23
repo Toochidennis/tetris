@@ -1,0 +1,51 @@
+{
+  "common": { "back": "Kembali", "close": "Tutup", "save": "Simpan", "cancel": "Batal", "loading": "Memuat..." },
+  "menu": { "play": "Main", "leaderboard": "Papan Peringkat", "settings": "Pengaturan", "tagline": "Susun. Bersihkan. Taklukkan." },
+  "modes": {
+    "title": "Pilih Mode",
+    "marathon": "Maraton", "marathonDesc": "Pendakian tanpa akhir ke level 15",
+    "sprint": "Sprint", "sprintDesc": "Bersihkan 40 baris secepatnya",
+    "ultra": "Ultra", "ultraDesc": "Skor maks dalam 2 menit",
+    "daily": "Harian", "dailyDesc": "Balok yang sama untuk semua hari ini"
+  },
+  "game": {
+    "score": "Skor", "level": "Level", "lines": "Baris", "time": "Waktu",
+    "hold": "Tahan", "next": "Berikutnya", "pause": "Jeda", "resume": "Lanjut",
+    "restart": "Mulai ulang", "quit": "Keluar", "paused": "Dijeda"
+  },
+  "results": {
+    "gameOver": "Permainan Selesai", "newRecord": "Rekor Baru!", "score": "Skor",
+    "lines": "Baris", "level": "Level", "time": "Waktu", "submit": "Kirim Skor",
+    "submitted": "Terkirim!", "retry": "Coba lagi", "menu": "Menu"
+  },
+  "leaderboard": { "title": "Papan Peringkat", "rank": "Peringkat", "player": "Pemain", "score": "Skor", "you": "Kamu", "live": "Langsung" },
+  "onboarding": {
+    "chooseAvatar": "Pilih avatar",
+    "welcome": "Selamat datang di BlockFall", "subtitle": "Atur profilmu",
+    "username": "Nama pengguna", "usernamePlaceholder": "Pilih nama",
+    "country": "Negara", "start": "Mulai Bermain", "usernameError": "2-16 karakter"
+  },
+  "settings": {
+    "title": "Pengaturan", "language": "Bahasa", "theme": "Tema", "handedness": "Sisi Kontrol",
+    "left": "Kiri", "right": "Kanan", "sfx": "Efek Suara", "music": "Musik",
+    "reducedMotion": "Kurangi Gerakan", "resetProfile": "Atur Ulang Profil"
+  },
+  "achievements": {
+    "title": "Pencapaian", "menu": "Pencapaian", "unlocked": "Terbuka",
+    "completed": "{{count}} / {{total}} terbuka", "unlockedToast": "Pencapaian Terbuka!", "locked": "Terkunci",
+    "items": {
+      "first_drop": { "title": "Jatuh Pertama", "desc": "Selesaikan permainan pertamamu" },
+      "warmed_up": { "title": "Pemanasan", "desc": "Mainkan 10 permainan" },
+      "veteran": { "title": "Veteran Balok", "desc": "Mainkan 50 permainan" },
+      "century": { "title": "Seratus", "desc": "Bersihkan total 100 baris" },
+      "line_cook": { "title": "Koki Baris", "desc": "Bersihkan total 1.000 baris" },
+      "high_roller": { "title": "Pemain Besar", "desc": "Cetak 50.000 di mode apa pun" },
+      "tetris": { "title": "Tetris!", "desc": "Bersihkan 4 baris sekaligus" },
+      "spin_doctor": { "title": "Ahli Putar", "desc": "Lakukan T-spin" },
+      "combo_king": { "title": "Raja Kombo", "desc": "Capai kombo 5+" },
+      "marathoner": { "title": "Pelari Maraton", "desc": "Capai level 15" },
+      "speed_demon": { "title": "Setan Kecepatan", "desc": "Selesaikan Sprint di bawah 90 dtk" },
+      "daily_devotion": { "title": "Dedikasi Harian", "desc": "Mainkan Harian 3 hari berturut-turut" }
+    }
+  }
+}

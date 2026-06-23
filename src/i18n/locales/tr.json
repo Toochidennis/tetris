@@ -1,0 +1,51 @@
+{
+  "common": { "back": "Geri", "close": "Kapat", "save": "Kaydet", "cancel": "İptal", "loading": "Yükleniyor..." },
+  "menu": { "play": "Oyna", "leaderboard": "Lider Tablosu", "settings": "Ayarlar", "tagline": "İstifle. Temizle. Fethet." },
+  "modes": {
+    "title": "Mod Seç",
+    "marathon": "Maraton", "marathonDesc": "15. seviyeye sonsuz tırmanış",
+    "sprint": "Sprint", "sprintDesc": "40 satırı en hızlı şekilde temizle",
+    "ultra": "Ultra", "ultraDesc": "2 dakikada en yüksek puan",
+    "daily": "Günlük", "dailyDesc": "Bugün herkese aynı parçalar"
+  },
+  "game": {
+    "score": "Puan", "level": "Seviye", "lines": "Satır", "time": "Süre",
+    "hold": "Tut", "next": "Sonraki", "pause": "Duraklat", "resume": "Devam et",
+    "restart": "Yeniden başlat", "quit": "Çık", "paused": "Duraklatıldı"
+  },
+  "results": {
+    "gameOver": "Oyun Bitti", "newRecord": "Yeni Rekor!", "score": "Puan",
+    "lines": "Satır", "level": "Seviye", "time": "Süre", "submit": "Puanı Gönder",
+    "submitted": "Gönderildi!", "retry": "Tekrar Dene", "menu": "Menü"
+  },
+  "leaderboard": { "title": "Lider Tablosu", "rank": "Sıra", "player": "Oyuncu", "score": "Puan", "you": "Sen", "live": "Canlı" },
+  "onboarding": {
+    "chooseAvatar": "Avatar seç",
+    "welcome": "BlockFall'a Hoş Geldin", "subtitle": "Profilini oluştur",
+    "username": "Kullanıcı adı", "usernamePlaceholder": "Bir ad seç",
+    "country": "Ülke", "start": "Oynamaya Başla", "usernameError": "2-16 karakter"
+  },
+  "settings": {
+    "title": "Ayarlar", "language": "Dil", "theme": "Tema", "handedness": "Kontrol Tarafı",
+    "left": "Sol", "right": "Sağ", "sfx": "Ses Efektleri", "music": "Müzik",
+    "reducedMotion": "Azaltılmış Hareket", "resetProfile": "Profili Sıfırla"
+  },
+  "achievements": {
+    "title": "Başarımlar", "menu": "Başarımlar", "unlocked": "Açıldı",
+    "completed": "{{count}} / {{total}} açıldı", "unlockedToast": "Başarım Açıldı!", "locked": "Kilitli",
+    "items": {
+      "first_drop": { "title": "İlk Düşüş", "desc": "İlk oyununu tamamla" },
+      "warmed_up": { "title": "Isınma", "desc": "10 oyun oyna" },
+      "veteran": { "title": "Blok Gazisi", "desc": "50 oyun oyna" },
+      "century": { "title": "Yüzlük", "desc": "Toplam 100 satır temizle" },
+      "line_cook": { "title": "Satır Aşçısı", "desc": "Toplam 1.000 satır temizle" },
+      "high_roller": { "title": "Yüksek Oyuncu", "desc": "Herhangi bir modda 50.000 yap" },
+      "tetris": { "title": "Tetris!", "desc": "Aynı anda 4 satır temizle" },
+      "spin_doctor": { "title": "Dönüş Ustası", "desc": "Bir T-spin yap" },
+      "combo_king": { "title": "Kombo Kralı", "desc": "5+ kombo yakala" },
+      "marathoner": { "title": "Maratoncu", "desc": "15. seviyeye ulaş" },
+      "speed_demon": { "title": "Hız Şeytanı", "desc": "Sprint'i 90 sn altında bitir" },
+      "daily_devotion": { "title": "Günlük Bağlılık", "desc": "Günlük'ü 3 gün üst üste oyna" }
+    }
+  }
+}

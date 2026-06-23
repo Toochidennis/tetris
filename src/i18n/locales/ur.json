@@ -1,0 +1,51 @@
+{
+  "common": { "back": "واپس", "close": "بند کریں", "save": "محفوظ کریں", "cancel": "منسوخ", "loading": "لوڈ ہو رہا ہے..." },
+  "menu": { "play": "کھیلیں", "leaderboard": "لیڈربورڈ", "settings": "ترتیبات", "tagline": "جمع کریں۔ صاف کریں۔ فتح کریں۔" },
+  "modes": {
+    "title": "موڈ منتخب کریں",
+    "marathon": "میراتھن", "marathonDesc": "لیول 15 تک لامتناہی چڑھائی",
+    "sprint": "اسپرنٹ", "sprintDesc": "40 لائنیں تیز ترین وقت میں صاف کریں",
+    "ultra": "الٹرا", "ultraDesc": "2 منٹ میں زیادہ سے زیادہ اسکور",
+    "daily": "روزانہ", "dailyDesc": "آج سب کے لیے ایک جیسے ٹکڑے"
+  },
+  "game": {
+    "score": "اسکور", "level": "لیول", "lines": "لائنیں", "time": "وقت",
+    "hold": "ہولڈ", "next": "اگلا", "pause": "روکیں", "resume": "جاری رکھیں",
+    "restart": "دوبارہ شروع", "quit": "باہر نکلیں", "paused": "رکا ہوا"
+  },
+  "results": {
+    "gameOver": "کھیل ختم", "newRecord": "نیا ریکارڈ!", "score": "اسکور",
+    "lines": "لائنیں", "level": "لیول", "time": "وقت", "submit": "اسکور جمع کریں",
+    "submitted": "جمع ہو گیا!", "retry": "دوبارہ کوشش", "menu": "مینو"
+  },
+  "leaderboard": { "title": "لیڈربورڈ", "rank": "درجہ", "player": "کھلاڑی", "score": "اسکور", "you": "آپ", "live": "لائیو" },
+  "onboarding": {
+    "chooseAvatar": "اوتار منتخب کریں",
+    "welcome": "BlockFall میں خوش آمدید", "subtitle": "اپنی پروفائل ترتیب دیں",
+    "username": "صارف نام", "usernamePlaceholder": "ایک نام منتخب کریں",
+    "country": "ملک", "start": "کھیلنا شروع کریں", "usernameError": "2 سے 16 حروف"
+  },
+  "settings": {
+    "title": "ترتیبات", "language": "زبان", "theme": "تھیم", "handedness": "کنٹرول کی سمت",
+    "left": "بائیں", "right": "دائیں", "sfx": "صوتی اثرات", "music": "موسیقی",
+    "reducedMotion": "حرکت کم کریں", "resetProfile": "پروفائل ری سیٹ کریں"
+  },
+  "achievements": {
+    "title": "کامیابیاں", "menu": "کامیابیاں", "unlocked": "کھل گیا",
+    "completed": "{{count}} / {{total}} کھل گئے", "unlockedToast": "کامیابی کھل گئی!", "locked": "مقفل",
+    "items": {
+      "first_drop": { "title": "پہلا ڈراپ", "desc": "اپنا پہلا کھیل مکمل کریں" },
+      "warmed_up": { "title": "وارم اپ", "desc": "10 کھیل کھیلیں" },
+      "veteran": { "title": "بلاک تجربہ کار", "desc": "50 کھیل کھیلیں" },
+      "century": { "title": "سنچری", "desc": "کل 100 لائنیں صاف کریں" },
+      "line_cook": { "title": "لائن کک", "desc": "کل 1,000 لائنیں صاف کریں" },
+      "high_roller": { "title": "ہائی رولر", "desc": "کسی بھی موڈ میں 50,000 اسکور" },
+      "tetris": { "title": "ٹیٹرس!", "desc": "ایک ساتھ 4 لائنیں صاف کریں" },
+      "spin_doctor": { "title": "اسپن ماسٹر", "desc": "ایک T-spin کریں" },
+      "combo_king": { "title": "کومبو کنگ", "desc": "5+ کومبو تک پہنچیں" },
+      "marathoner": { "title": "میراتھنر", "desc": "لیول 15 تک پہنچیں" },
+      "speed_demon": { "title": "اسپیڈ ڈیمن", "desc": "اسپرنٹ 90 سیکنڈ میں مکمل کریں" },
+      "daily_devotion": { "title": "روزانہ لگن", "desc": "روزانہ کو مسلسل 3 دن کھیلیں" }
+    }
+  }
+}
