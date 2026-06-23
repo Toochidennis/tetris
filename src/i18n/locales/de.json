@@ -1,0 +1,51 @@
+{
+  "common": { "back": "Zurück", "close": "Schließen", "save": "Speichern", "cancel": "Abbrechen", "loading": "Wird geladen..." },
+  "menu": { "play": "Spielen", "leaderboard": "Bestenliste", "settings": "Einstellungen", "tagline": "Stapeln. Räumen. Erobern." },
+  "modes": {
+    "title": "Modus wählen",
+    "marathon": "Marathon", "marathonDesc": "Endloser Aufstieg bis Level 15",
+    "sprint": "Sprint", "sprintDesc": "40 Linien in Bestzeit räumen",
+    "ultra": "Ultra", "ultraDesc": "Höchstpunktzahl in 2 Minuten",
+    "daily": "Täglich", "dailyDesc": "Heute für alle dieselben Steine"
+  },
+  "game": {
+    "score": "Punkte", "level": "Level", "lines": "Linien", "time": "Zeit",
+    "hold": "Halten", "next": "Nächste", "pause": "Pause", "resume": "Fortsetzen",
+    "restart": "Neustart", "quit": "Beenden", "paused": "Pausiert"
+  },
+  "results": {
+    "gameOver": "Spiel vorbei", "newRecord": "Neuer Rekord!", "score": "Punkte",
+    "lines": "Linien", "level": "Level", "time": "Zeit", "submit": "Punkte senden",
+    "submitted": "Gesendet!", "retry": "Erneut", "menu": "Menü"
+  },
+  "leaderboard": { "title": "Bestenliste", "rank": "Rang", "player": "Spieler", "score": "Punkte", "you": "Du", "live": "Live" },
+  "onboarding": {
+    "chooseAvatar": "Avatar wählen",
+    "welcome": "Willkommen bei BlockFall", "subtitle": "Richte dein Profil ein",
+    "username": "Benutzername", "usernamePlaceholder": "Benutzernamen wählen",
+    "country": "Land", "start": "Losspielen", "usernameError": "2–16 Zeichen"
+  },
+  "settings": {
+    "title": "Einstellungen", "language": "Sprache", "theme": "Design", "handedness": "Steuerungsseite",
+    "left": "Links", "right": "Rechts", "sfx": "Soundeffekte", "music": "Musik",
+    "reducedMotion": "Reduzierte Bewegung", "resetProfile": "Profil zurücksetzen"
+  },
+  "achievements": {
+    "title": "Erfolge", "menu": "Erfolge", "unlocked": "Freigeschaltet",
+    "completed": "{{count}} / {{total}} freigeschaltet", "unlockedToast": "Erfolg freigeschaltet!", "locked": "Gesperrt",
+    "items": {
+      "first_drop": { "title": "Erster Fall", "desc": "Beende dein erstes Spiel" },
+      "warmed_up": { "title": "Aufgewärmt", "desc": "Spiele 10 Spiele" },
+      "veteran": { "title": "Block-Veteran", "desc": "Spiele 50 Spiele" },
+      "century": { "title": "Hundert", "desc": "Räume insgesamt 100 Linien" },
+      "line_cook": { "title": "Linienkoch", "desc": "Räume insgesamt 1.000 Linien" },
+      "high_roller": { "title": "Großverdiener", "desc": "Erziele 50.000 in einem Modus" },
+      "tetris": { "title": "Tetris!", "desc": "Räume 4 Linien auf einmal" },
+      "spin_doctor": { "title": "Dreh-Doktor", "desc": "Lande einen T-Spin" },
+      "combo_king": { "title": "Combo-König", "desc": "Erreiche einen 5+-Combo" },
+      "marathoner": { "title": "Marathonläufer", "desc": "Erreiche Level 15" },
+      "speed_demon": { "title": "Raserei", "desc": "Beende Sprint unter 90 s" },
+      "daily_devotion": { "title": "Tägliche Hingabe", "desc": "Spiele 3 Tage in Folge das Tägliche" }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "common": { "back": "Indietro", "close": "Chiudi", "save": "Salva", "cancel": "Annulla", "loading": "Caricamento..." },
+  "menu": { "play": "Gioca", "leaderboard": "Classifica", "settings": "Impostazioni", "tagline": "Impila. Elimina. Conquista." },
+  "modes": {
+    "title": "Scegli modalità",
+    "marathon": "Maratona", "marathonDesc": "Scalata infinita fino al livello 15",
+    "sprint": "Sprint", "sprintDesc": "Elimina 40 linee nel minor tempo",
+    "ultra": "Ultra", "ultraDesc": "Punteggio massimo in 2 minuti",
+    "daily": "Giornaliero", "dailyDesc": "Stessi pezzi per tutti oggi"
+  },
+  "game": {
+    "score": "Punti", "level": "Livello", "lines": "Linee", "time": "Tempo",
+    "hold": "Riserva", "next": "Successivo", "pause": "Pausa", "resume": "Riprendi",
+    "restart": "Ricomincia", "quit": "Esci", "paused": "In pausa"
+  },
+  "results": {
+    "gameOver": "Game Over", "newRecord": "Nuovo record!", "score": "Punti",
+    "lines": "Linee", "level": "Livello", "time": "Tempo", "submit": "Invia punteggio",
+    "submitted": "Inviato!", "retry": "Riprova", "menu": "Menu"
+  },
+  "leaderboard": { "title": "Classifica", "rank": "Posizione", "player": "Giocatore", "score": "Punti", "you": "Tu", "live": "Dal vivo" },
+  "onboarding": {
+    "chooseAvatar": "Scegli avatar",
+    "welcome": "Benvenuto su BlockFall", "subtitle": "Configura il tuo profilo",
+    "username": "Nome utente", "usernamePlaceholder": "Scegli un nome",
+    "country": "Paese", "start": "Inizia a giocare", "usernameError": "2-16 caratteri"
+  },
+  "settings": {
+    "title": "Impostazioni", "language": "Lingua", "theme": "Tema", "handedness": "Lato dei comandi",
+    "left": "Sinistra", "right": "Destra", "sfx": "Effetti sonori", "music": "Musica",
+    "reducedMotion": "Movimento ridotto", "resetProfile": "Reimposta profilo"
+  },
+  "achievements": {
+    "title": "Obiettivi", "menu": "Obiettivi", "unlocked": "Sbloccato",
+    "completed": "{{count}} / {{total}} sbloccati", "unlockedToast": "Obiettivo sbloccato!", "locked": "Bloccato",
+    "items": {
+      "first_drop": { "title": "Prima caduta", "desc": "Completa la tua prima partita" },
+      "warmed_up": { "title": "Riscaldamento", "desc": "Gioca 10 partite" },
+      "veteran": { "title": "Veterano dei blocchi", "desc": "Gioca 50 partite" },
+      "century": { "title": "Centinaio", "desc": "Elimina 100 linee in totale" },
+      "line_cook": { "title": "Cuoco di linee", "desc": "Elimina 1.000 linee in totale" },
+      "high_roller": { "title": "Gran giocatore", "desc": "Fai 50.000 in qualsiasi modalità" },
+      "tetris": { "title": "Tetris!", "desc": "Elimina 4 linee in una volta" },
+      "spin_doctor": { "title": "Maestro del giro", "desc": "Esegui un T-spin" },
+      "combo_king": { "title": "Re delle combo", "desc": "Raggiungi una combo di 5+" },
+      "marathoner": { "title": "Maratoneta", "desc": "Raggiungi il livello 15" },
+      "speed_demon": { "title": "Demone della velocità", "desc": "Completa lo Sprint in meno di 90 s" },
+      "daily_devotion": { "title": "Devozione quotidiana", "desc": "Gioca al Giornaliero per 3 giorni di fila" }
+    }
+  }
+}

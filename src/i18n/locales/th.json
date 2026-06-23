@@ -1,0 +1,51 @@
+{
+  "common": { "back": "กลับ", "close": "ปิด", "save": "บันทึก", "cancel": "ยกเลิก", "loading": "กำลังโหลด..." },
+  "menu": { "play": "เล่น", "leaderboard": "กระดานผู้นำ", "settings": "การตั้งค่า", "tagline": "วาง. เคลียร์. พิชิต." },
+  "modes": {
+    "title": "เลือกโหมด",
+    "marathon": "มาราธอน", "marathonDesc": "ไต่ระดับไม่สิ้นสุดถึงเลเวล 15",
+    "sprint": "สปรินต์", "sprintDesc": "เคลียร์ 40 แถวให้เร็วที่สุด",
+    "ultra": "อัลตร้า", "ultraDesc": "ทำคะแนนสูงสุดใน 2 นาที",
+    "daily": "รายวัน", "dailyDesc": "วันนี้บล็อกเหมือนกันทุกคน"
+  },
+  "game": {
+    "score": "คะแนน", "level": "เลเวล", "lines": "แถว", "time": "เวลา",
+    "hold": "พัก", "next": "ถัดไป", "pause": "หยุดชั่วคราว", "resume": "เล่นต่อ",
+    "restart": "เริ่มใหม่", "quit": "ออก", "paused": "หยุดชั่วคราว"
+  },
+  "results": {
+    "gameOver": "เกมจบ", "newRecord": "สถิติใหม่!", "score": "คะแนน",
+    "lines": "แถว", "level": "เลเวล", "time": "เวลา", "submit": "ส่งคะแนน",
+    "submitted": "ส่งแล้ว!", "retry": "ลองอีกครั้ง", "menu": "เมนู"
+  },
+  "leaderboard": { "title": "กระดานผู้นำ", "rank": "อันดับ", "player": "ผู้เล่น", "score": "คะแนน", "you": "คุณ", "live": "สด" },
+  "onboarding": {
+    "chooseAvatar": "เลือกอวตาร",
+    "welcome": "ยินดีต้อนรับสู่ BlockFall", "subtitle": "ตั้งค่าโปรไฟล์ของคุณ",
+    "username": "ชื่อผู้ใช้", "usernamePlaceholder": "เลือกชื่อ",
+    "country": "ประเทศ", "start": "เริ่มเล่น", "usernameError": "2-16 ตัวอักษร"
+  },
+  "settings": {
+    "title": "การตั้งค่า", "language": "ภาษา", "theme": "ธีม", "handedness": "ด้านควบคุม",
+    "left": "ซ้าย", "right": "ขวา", "sfx": "เอฟเฟกต์เสียง", "music": "เพลง",
+    "reducedMotion": "ลดการเคลื่อนไหว", "resetProfile": "รีเซ็ตโปรไฟล์"
+  },
+  "achievements": {
+    "title": "ความสำเร็จ", "menu": "ความสำเร็จ", "unlocked": "ปลดล็อกแล้ว",
+    "completed": "ปลดล็อก {{count}} / {{total}}", "unlockedToast": "ปลดล็อกความสำเร็จ!", "locked": "ล็อก",
+    "items": {
+      "first_drop": { "title": "หย่อนครั้งแรก", "desc": "จบเกมแรกของคุณ" },
+      "warmed_up": { "title": "วอร์มอัพ", "desc": "เล่น 10 เกม" },
+      "veteran": { "title": "ทหารผ่านศึกบล็อก", "desc": "เล่น 50 เกม" },
+      "century": { "title": "ร้อยแถว", "desc": "เคลียร์รวม 100 แถว" },
+      "line_cook": { "title": "เชฟเคลียร์แถว", "desc": "เคลียร์รวม 1,000 แถว" },
+      "high_roller": { "title": "นักเล่นตัวยง", "desc": "ทำ 50,000 คะแนนในโหมดใดก็ได้" },
+      "tetris": { "title": "เทตริส!", "desc": "เคลียร์ 4 แถวพร้อมกัน" },
+      "spin_doctor": { "title": "ปรมาจารย์หมุน", "desc": "ทำ T-spin" },
+      "combo_king": { "title": "ราชาคอมโบ", "desc": "ทำคอมโบ 5+" },
+      "marathoner": { "title": "นักมาราธอน", "desc": "ไปถึงเลเวล 15" },
+      "speed_demon": { "title": "ปีศาจความเร็ว", "desc": "จบสปรินต์ภายใน 90 วินาที" },
+      "daily_devotion": { "title": "ความทุ่มเทรายวัน", "desc": "เล่นรายวัน 3 วันติด" }
+    }
+  }
+}

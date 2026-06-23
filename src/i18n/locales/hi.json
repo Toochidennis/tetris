@@ -1,0 +1,51 @@
+{
+  "common": { "back": "वापस", "close": "बंद करें", "save": "सहेजें", "cancel": "रद्द करें", "loading": "लोड हो रहा है..." },
+  "menu": { "play": "खेलें", "leaderboard": "लीडरबोर्ड", "settings": "सेटिंग्स", "tagline": "जमाओ। साफ़ करो। जीतो।" },
+  "modes": {
+    "title": "मोड चुनें",
+    "marathon": "मैराथन", "marathonDesc": "लेवल 15 तक अनंत चढ़ाई",
+    "sprint": "स्प्रिंट", "sprintDesc": "40 लाइनें सबसे तेज़ साफ़ करें",
+    "ultra": "अल्ट्रा", "ultraDesc": "2 मिनट में अधिकतम स्कोर",
+    "daily": "दैनिक", "dailyDesc": "आज सबके लिए एक जैसे टुकड़े"
+  },
+  "game": {
+    "score": "स्कोर", "level": "लेवल", "lines": "लाइनें", "time": "समय",
+    "hold": "होल्ड", "next": "अगला", "pause": "रोकें", "resume": "जारी रखें",
+    "restart": "फिर से शुरू", "quit": "छोड़ें", "paused": "रुका हुआ"
+  },
+  "results": {
+    "gameOver": "गेम ओवर", "newRecord": "नया रिकॉर्ड!", "score": "स्कोर",
+    "lines": "लाइनें", "level": "लेवल", "time": "समय", "submit": "स्कोर भेजें",
+    "submitted": "भेज दिया!", "retry": "पुनः प्रयास", "menu": "मेनू"
+  },
+  "leaderboard": { "title": "लीडरबोर्ड", "rank": "रैंक", "player": "खिलाड़ी", "score": "स्कोर", "you": "आप", "live": "लाइव" },
+  "onboarding": {
+    "chooseAvatar": "अवतार चुनें",
+    "welcome": "BlockFall में आपका स्वागत है", "subtitle": "अपनी प्रोफ़ाइल सेट करें",
+    "username": "उपयोगकर्ता नाम", "usernamePlaceholder": "एक नाम चुनें",
+    "country": "देश", "start": "खेलना शुरू करें", "usernameError": "2-16 अक्षर"
+  },
+  "settings": {
+    "title": "सेटिंग्स", "language": "भाषा", "theme": "थीम", "handedness": "नियंत्रण पक्ष",
+    "left": "बाएँ", "right": "दाएँ", "sfx": "ध्वनि प्रभाव", "music": "संगीत",
+    "reducedMotion": "कम एनिमेशन", "resetProfile": "प्रोफ़ाइल रीसेट करें"
+  },
+  "achievements": {
+    "title": "उपलब्धियाँ", "menu": "उपलब्धियाँ", "unlocked": "अनलॉक",
+    "completed": "{{count}} / {{total}} अनलॉक", "unlockedToast": "उपलब्धि अनलॉक!", "locked": "लॉक",
+    "items": {
+      "first_drop": { "title": "पहली गिरावट", "desc": "अपना पहला गेम पूरा करें" },
+      "warmed_up": { "title": "वार्म-अप", "desc": "10 गेम खेलें" },
+      "veteran": { "title": "ब्लॉक अनुभवी", "desc": "50 गेम खेलें" },
+      "century": { "title": "सेंचुरी", "desc": "कुल 100 लाइनें साफ़ करें" },
+      "line_cook": { "title": "लाइन कुक", "desc": "कुल 1,000 लाइनें साफ़ करें" },
+      "high_roller": { "title": "हाई रोलर", "desc": "किसी भी मोड में 50,000 स्कोर" },
+      "tetris": { "title": "टेट्रिस!", "desc": "एक साथ 4 लाइनें साफ़ करें" },
+      "spin_doctor": { "title": "स्पिन मास्टर", "desc": "एक T-spin करें" },
+      "combo_king": { "title": "कॉम्बो किंग", "desc": "5+ कॉम्बो तक पहुँचें" },
+      "marathoner": { "title": "मैराथनर", "desc": "लेवल 15 तक पहुँचें" },
+      "speed_demon": { "title": "स्पीड डेमन", "desc": "स्प्रिंट 90 सेकंड में पूरा करें" },
+      "daily_devotion": { "title": "दैनिक समर्पण", "desc": "दैनिक को लगातार 3 दिन खेलें" }
+    }
+  }
+}

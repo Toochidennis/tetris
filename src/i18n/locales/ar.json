@@ -1,0 +1,51 @@
+{
+  "common": { "back": "رجوع", "close": "إغلاق", "save": "حفظ", "cancel": "إلغاء", "loading": "جارٍ التحميل..." },
+  "menu": { "play": "العب", "leaderboard": "المتصدرون", "settings": "الإعدادات", "tagline": "كدّس. امسح. انتصر." },
+  "modes": {
+    "title": "اختر الوضع",
+    "marathon": "ماراثون", "marathonDesc": "صعود لا نهائي حتى المستوى ١٥",
+    "sprint": "سباق", "sprintDesc": "امسح ٤٠ سطرًا بأسرع وقت",
+    "ultra": "ألترا", "ultraDesc": "أعلى نقاط في دقيقتين",
+    "daily": "اليومي", "dailyDesc": "نفس القطع للجميع اليوم"
+  },
+  "game": {
+    "score": "النقاط", "level": "المستوى", "lines": "الأسطر", "time": "الوقت",
+    "hold": "احتفاظ", "next": "التالي", "pause": "إيقاف", "resume": "متابعة",
+    "restart": "إعادة", "quit": "خروج", "paused": "متوقف"
+  },
+  "results": {
+    "gameOver": "انتهت اللعبة", "newRecord": "رقم قياسي جديد!", "score": "النقاط",
+    "lines": "الأسطر", "level": "المستوى", "time": "الوقت", "submit": "إرسال النتيجة",
+    "submitted": "تم الإرسال!", "retry": "إعادة", "menu": "القائمة"
+  },
+  "leaderboard": { "title": "المتصدرون", "rank": "المركز", "player": "اللاعب", "score": "النقاط", "you": "أنت", "live": "مباشر" },
+  "onboarding": {
+    "chooseAvatar": "اختر الصورة الرمزية",
+    "welcome": "مرحبًا بك في BlockFall", "subtitle": "أنشئ ملفك الشخصي",
+    "username": "اسم المستخدم", "usernamePlaceholder": "اختر اسم مستخدم",
+    "country": "الدولة", "start": "ابدأ اللعب", "usernameError": "من ٢ إلى ١٦ حرفًا"
+  },
+  "settings": {
+    "title": "الإعدادات", "language": "اللغة", "theme": "السمة", "handedness": "جهة التحكم",
+    "left": "يسار", "right": "يمين", "sfx": "المؤثرات الصوتية", "music": "الموسيقى",
+    "reducedMotion": "تقليل الحركة", "resetProfile": "إعادة ضبط الملف"
+  },
+  "achievements": {
+    "title": "الإنجازات", "menu": "الإنجازات", "unlocked": "مفتوح",
+    "completed": "{{count}} / {{total}} مفتوحة", "unlockedToast": "تم فتح إنجاز!", "locked": "مقفل",
+    "items": {
+      "first_drop": { "title": "أول إسقاط", "desc": "أنهِ مباراتك الأولى" },
+      "warmed_up": { "title": "الإحماء", "desc": "العب ١٠ مباريات" },
+      "veteran": { "title": "محارب القطع", "desc": "العب ٥٠ مباراة" },
+      "century": { "title": "المئة", "desc": "امسح ١٠٠ سطر إجمالًا" },
+      "line_cook": { "title": "طاهي الأسطر", "desc": "امسح ١٠٠٠ سطر إجمالًا" },
+      "high_roller": { "title": "اللاعب الكبير", "desc": "سجّل ٥٠٬٠٠٠ في أي وضع" },
+      "tetris": { "title": "تتريس!", "desc": "امسح ٤ أسطر دفعة واحدة" },
+      "spin_doctor": { "title": "سيد الدوران", "desc": "نفّذ حركة T-spin" },
+      "combo_king": { "title": "ملك التتابع", "desc": "حقّق تتابعًا من ٥ أو أكثر" },
+      "marathoner": { "title": "عدّاء الماراثون", "desc": "ابلغ المستوى ١٥" },
+      "speed_demon": { "title": "شيطان السرعة", "desc": "أنهِ السباق في أقل من ٩٠ ثانية" },
+      "daily_devotion": { "title": "الإخلاص اليومي", "desc": "العب التحدي اليومي ٣ أيام متتالية" }
+    }
+  }
+}
