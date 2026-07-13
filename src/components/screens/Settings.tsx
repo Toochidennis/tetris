@@ -5,6 +5,7 @@ import i18n, { applyDirection, ensureLanguageLoaded } from "../../i18n";
 import type { ThemeName } from "../../state/metaStore";
 import { ArcadeBackground } from "../ArcadeBackground";
 import { LanguageSelect } from "../LanguageSelect";
+import { useCatalogStore } from "../../state/catalogStore";
 
 const THEMES: ThemeName[] = ["neon-dark", "classic", "minimal-light"];
 
@@ -20,11 +21,12 @@ const item: Variants = {
 export function Settings() {
   const { t } = useTranslation();
   const { setScreen, settings, setSettings, resetAll } = useMetaStore();
+  const { languages, status, error } = useCatalogStore();
 
   const changeLang = (lng: string) => {
     setSettings({ language: lng });
     void ensureLanguageLoaded(lng).finally(() => void i18n.changeLanguage(lng));
-    applyDirection(lng);
+    applyDirection(lng, languages.find((language) => language.code === lng)?.direction);
   };
 
   return (
@@ -55,7 +57,9 @@ export function Settings() {
 
           {/* Language */}
           <Card icon="🌐" color="#38BDF8" label={t("settings.language")} noBlur>
-            <LanguageSelect value={settings.language} onChange={changeLang} />
+            <LanguageSelect value={settings.language} options={languages} onChange={changeLang} />
+            {status === "loading" && <CatalogStatus>Loading languages…</CatalogStatus>}
+            {status === "error" && <CatalogStatus>{error ?? "Using offline language list"}</CatalogStatus>}
           </Card>
 
           {/* Theme */}
@@ -115,6 +119,10 @@ export function Settings() {
       </div>
     </div>
   );
+}
+
+function CatalogStatus({ children }: { children: React.ReactNode }) {
+  return <div style={{ marginTop: 6, color: "#7c83a3", fontSize: 11 }}>{children}</div>;
 }
 
 

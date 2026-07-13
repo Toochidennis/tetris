@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Flag } from "./Flag";
+import type { CountryOption } from "../data/catalog";
 
 // Custom country dropdown — unlike a native <select>, this can render real SVG
 // flags in every row. Opens downward, scrolls, closes on outside-click / Escape.
@@ -10,14 +11,14 @@ export function CountrySelect({
   onChange,
 }: {
   value: string;
-  options: [string, string][];
+  options: CountryOption[];
   onChange: (code: string) => void;
 }) {
   const [open, setOpen] = useState(false);
   const [hover, setHover] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const ref = useRef<HTMLDivElement>(null);
-  const selected = options.find(([c]) => c === value);
+  const selected = options.find((country) => country.code === value);
 
   useEffect(() => {
     if (!open) return;
@@ -38,7 +39,7 @@ export function CountrySelect({
 
   const q = query.trim().toLowerCase();
   const filtered = q
-    ? options.filter(([code, label]) => label.toLowerCase().includes(q) || code.toLowerCase().includes(q))
+    ? options.filter(({ code, name }) => name.toLowerCase().includes(q) || code.toLowerCase().includes(q))
     : options;
 
   return (
@@ -60,7 +61,7 @@ export function CountrySelect({
       >
         <Flag code={value} width={26} />
         <span style={{ flex: 1, textAlign: "start", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-          {selected?.[1] ?? value}
+          {selected?.name ?? value}
         </span>
         <motion.span animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.18 }} style={{ color: "#A5B4FC", fontSize: 11, lineHeight: 1 }}>
           ▼
@@ -105,7 +106,7 @@ export function CountrySelect({
             {filtered.length === 0 && (
               <div style={{ padding: "14px 10px", color: "#7c83a3", fontSize: 13, textAlign: "center" }}>No matches</div>
             )}
-            {filtered.map(([code, label]) => {
+            {filtered.map(({ code, name }) => {
               const sel = code === value;
               const hot = hover === code;
               return (
@@ -126,7 +127,7 @@ export function CountrySelect({
                   }}
                 >
                   <Flag code={code} width={24} />
-                  <span style={{ flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{label}</span>
+                  <span style={{ flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{name}</span>
                   {sel && <span style={{ color: "#a78bfa", fontWeight: 800 }}>✓</span>}
                 </button>
               );
