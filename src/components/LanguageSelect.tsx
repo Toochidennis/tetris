@@ -1,15 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Flag } from "./Flag";
-import { LANGUAGES } from "../data/languages";
+import type { LanguageOption } from "../data/catalog";
 
 // Custom language dropdown — shows each language's native name + flag (no codes),
 // drops downward, closes on outside-click / Escape.
-export function LanguageSelect({ value, onChange }: { value: string; onChange: (code: string) => void }) {
+export function LanguageSelect({ value, options, onChange }: { value: string; options: LanguageOption[]; onChange: (code: string) => void }) {
   const [open, setOpen] = useState(false);
   const [hover, setHover] = useState<string | null>(null);
   const ref = useRef<HTMLDivElement>(null);
-  const selected = LANGUAGES.find((l) => l.code === value) ?? LANGUAGES.find((l) => l.code === "en")!;
+  const selected = options.find((l) => l.code === value) ?? options.find((l) => l.code === "en") ?? options[0];
 
   useEffect(() => {
     if (!open) return;
@@ -41,8 +41,8 @@ export function LanguageSelect({ value, onChange }: { value: string; onChange: (
           transition: "border-color 160ms, box-shadow 160ms",
         }}
       >
-        <Flag code={selected.flag} width={24} />
-        <span style={{ flex: 1, textAlign: "start" }}>{selected.label}</span>
+        <Flag code={selected?.flag} width={24} />
+        <span style={{ flex: 1, textAlign: "start" }}>{selected?.label ?? value}</span>
         <motion.span animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.18 }} style={{ color: "#A5B4FC", fontSize: 11, lineHeight: 1 }}>▼</motion.span>
       </button>
 
@@ -62,7 +62,7 @@ export function LanguageSelect({ value, onChange }: { value: string; onChange: (
               boxShadow: "0 16px 36px rgba(0,0,0,0.55), 0 0 18px rgba(56,189,248,0.2)",
             }}
           >
-            {LANGUAGES.map((l) => {
+            {options.map((l) => {
               const sel = l.code === value;
               const hot = hover === l.code;
               return (

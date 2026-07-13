@@ -1,6 +1,5 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import { LANGUAGES, RTL_CODES } from "../data/languages";
 
 import ar from "./locales/ar.json";
 import zh from "./locales/zh.json";
@@ -36,9 +35,8 @@ const bundled: Record<string, { translation: Record<string, unknown> }> = {
   th: { translation: th }, tr: { translation: tr }, ur: { translation: ur },
 };
 
-export const RTL_LANGS = RTL_CODES;
-export const SUPPORTED_LANGS = LANGUAGES.map((l) => l.code);
-export { LANGUAGES } from "../data/languages";
+export const RTL_LANGS: readonly string[] = ["ar", "ur"];
+export const SUPPORTED_LANGS = Object.keys(bundled);
 
 function defaultLang(): string {
   const nav = (navigator.language || "en").split("-")[0];
@@ -75,8 +73,8 @@ export async function ensureLanguageLoaded(lang: string): Promise<void> {
   }
 }
 
-export function applyDirection(lang: string) {
-  const dir = RTL_LANGS.includes(lang) ? "rtl" : "ltr";
+export function applyDirection(lang: string, apiDirection?: "ltr" | "rtl") {
+  const dir = apiDirection ?? (RTL_LANGS.includes(lang) ? "rtl" : "ltr");
   document.documentElement.setAttribute("dir", dir);
   document.documentElement.setAttribute("lang", lang);
 }

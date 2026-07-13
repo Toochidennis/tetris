@@ -5,7 +5,7 @@ import { useMetaStore } from "../../state/metaStore";
 import { applyDirection } from "../../i18n";
 import { Avatar, AVATAR_META } from "../Avatars";
 import { CountrySelect } from "../CountrySelect";
-import { COUNTRIES } from "../../data/countries";
+import { useCatalogStore } from "../../state/catalogStore";
 
 // Decorative tetromino clusters tucked into the corners.
 const CORNER_BLOCKS: { cells: number[][]; color: string; style: React.CSSProperties; dur: number }[] = [
@@ -77,6 +77,7 @@ function LogoMark() {
 export function Onboarding() {
   const { t, i18n } = useTranslation();
   const { createProfile, setScreen } = useMetaStore();
+  const { countries, status, error } = useCatalogStore();
   const [name, setName] = useState("");
   const [country, setCountry] = useState("NG");
   const [avatar, setAvatar] = useState(0);
@@ -227,7 +228,9 @@ export function Onboarding() {
         {/* Country */}
         <motion.div variants={item}>
           <Label>{t("onboarding.country")}</Label>
-          <CountrySelect value={country} options={COUNTRIES} onChange={setCountry} />
+          <CountrySelect value={country} options={countries} onChange={setCountry} />
+          {status === "loading" && <CatalogStatus>Loading countries…</CatalogStatus>}
+          {status === "error" && <CatalogStatus>{error ?? "Using offline country list"}</CatalogStatus>}
         </motion.div>
 
         <div style={{ flex: 1, minHeight: 8 }} />
@@ -278,4 +281,8 @@ function Label({ children }: { children: React.ReactNode }) {
       {children}
     </div>
   );
+}
+
+function CatalogStatus({ children }: { children: React.ReactNode }) {
+  return <div style={{ marginTop: 6, color: "#7c83a3", fontSize: 11 }}>{children}</div>;
 }

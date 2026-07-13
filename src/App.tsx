@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useMetaStore, type Screen } from "./state/metaStore";
 import i18n, { applyDirection, ensureLanguageLoaded } from "./i18n";
 import { AchievementToast } from "./components/AchievementToast";
+import { useCatalogStore } from "./state/catalogStore";
 
 const screens: Record<Screen, LazyExoticComponent<ComponentType>> = {
   splash: lazy(() => import("./components/screens/Splash").then((m) => ({ default: m.Splash }))),
@@ -25,6 +26,8 @@ function ScreenFallback() {
 
 export default function App() {
   const { screen, settings } = useMetaStore();
+  const loadCatalogs = useCatalogStore((state) => state.load);
+  const languages = useCatalogStore((state) => state.languages);
   const ActiveScreen = screens[screen];
 
   // Apply theme + language + direction whenever they change.
@@ -32,10 +35,12 @@ export default function App() {
     document.documentElement.setAttribute("data-theme", settings.theme);
   }, [settings.theme]);
 
+  useEffect(() => { void loadCatalogs(); }, [loadCatalogs]);
+
   useEffect(() => {
     void ensureLanguageLoaded(settings.language).finally(() => void i18n.changeLanguage(settings.language));
-    applyDirection(settings.language);
-  }, [settings.language]);
+    applyDirection(settings.language, languages.find((language) => language.code === settings.language)?.direction);
+  }, [settings.language, languages]);
 
   return (
     <div style={{ height: "100dvh", maxWidth: 520, margin: "0 auto", position: "relative", overflow: "hidden", background: "#050816" }}>

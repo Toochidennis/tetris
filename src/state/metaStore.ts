@@ -3,7 +3,7 @@ import type { GameMode, GameSummary } from "../engine/types";
 import { profileService } from "./services";
 import type { PlayerProfile } from "./services";
 import { evaluateAchievements, nextStreak, utcDate } from "./achievements/evaluate";
-import { LANGUAGES } from "../data/languages";
+import { SUPPORTED_LANGS } from "../i18n";
 
 // Fill defaults on profiles created before achievements/streak existed.
 function normalizeProfile(p: PlayerProfile | null): PlayerProfile | null {
@@ -39,7 +39,7 @@ interface Settings {
 }
 
 const SETTINGS_KEY = "blockfall.settings.v1";
-const SUPPORTED_CODES = LANGUAGES.map((l) => l.code);
+const SUPPORTED_CODES = SUPPORTED_LANGS;
 
 // The user's default language = the device language on first open, clamped to a
 // language we actually support (else English).
