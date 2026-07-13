@@ -1,19 +1,31 @@
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect, type ComponentType, type LazyExoticComponent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useMetaStore } from "./state/metaStore";
+import { useMetaStore, type Screen } from "./state/metaStore";
 import i18n, { applyDirection, ensureLanguageLoaded } from "./i18n";
-import { Splash } from "./components/screens/Splash";
-import { Onboarding } from "./components/screens/Onboarding";
-import { Menu } from "./components/screens/Menu";
-import { ModeSelect } from "./components/screens/ModeSelect";
-import { Game } from "./components/screens/Game";
-import { Leaderboard } from "./components/screens/Leaderboard";
-import { Achievements } from "./components/screens/Achievements";
-import { Settings } from "./components/screens/Settings";
 import { AchievementToast } from "./components/AchievementToast";
+
+const screens: Record<Screen, LazyExoticComponent<ComponentType>> = {
+  splash: lazy(() => import("./components/screens/Splash").then((m) => ({ default: m.Splash }))),
+  onboarding: lazy(() => import("./components/screens/Onboarding").then((m) => ({ default: m.Onboarding }))),
+  menu: lazy(() => import("./components/screens/Menu").then((m) => ({ default: m.Menu }))),
+  modeSelect: lazy(() => import("./components/screens/ModeSelect").then((m) => ({ default: m.ModeSelect }))),
+  game: lazy(() => import("./components/screens/Game").then((m) => ({ default: m.Game }))),
+  leaderboard: lazy(() => import("./components/screens/Leaderboard").then((m) => ({ default: m.Leaderboard }))),
+  achievements: lazy(() => import("./components/screens/Achievements").then((m) => ({ default: m.Achievements }))),
+  settings: lazy(() => import("./components/screens/Settings").then((m) => ({ default: m.Settings }))),
+};
+
+function ScreenFallback() {
+  return (
+    <div style={{ height: "100%", display: "grid", placeItems: "center", color: "var(--text-muted)", fontWeight: 800 }}>
+      BlockFall
+    </div>
+  );
+}
 
 export default function App() {
   const { screen, settings } = useMetaStore();
+  const ActiveScreen = screens[screen];
 
   // Apply theme + language + direction whenever they change.
   useEffect(() => {
@@ -24,17 +36,6 @@ export default function App() {
     void ensureLanguageLoaded(settings.language).finally(() => void i18n.changeLanguage(settings.language));
     applyDirection(settings.language);
   }, [settings.language]);
-
-  const screens: Record<string, JSX.Element> = {
-    splash: <Splash />,
-    onboarding: <Onboarding />,
-    menu: <Menu />,
-    modeSelect: <ModeSelect />,
-    game: <Game />,
-    leaderboard: <Leaderboard />,
-    achievements: <Achievements />,
-    settings: <Settings />,
-  };
 
   return (
     <div style={{ height: "100dvh", maxWidth: 520, margin: "0 auto", position: "relative", overflow: "hidden", background: "#050816" }}>
@@ -50,7 +51,9 @@ export default function App() {
           transition={{ duration: settings.reducedMotion ? 0 : 0.26 }}
           style={{ position: "absolute", inset: 0 }}
         >
-          {screens[screen]}
+          <Suspense fallback={<ScreenFallback />}>
+            <ActiveScreen />
+          </Suspense>
         </motion.div>
       </AnimatePresence>
 
