@@ -419,8 +419,10 @@ export class TetrisEngine {
 }
 
 export const MODE_CONFIGS: Record<GameMode, ModeConfig> = {
-  marathon: { mode: "marathon", levelCap: 15 },
-  sprint: { mode: "sprint", lineGoal: 40 },
+  // Gravity scaled so level 1 starts at ~112ms/row (2.5x slower than ultra).
+  // The floor scales by the same factor, so the level ramp keeps its shape.
+  marathon: { mode: "marathon", levelCap: 15, gravityScale: 0.1125, gravityMinMs: 10 },
+  sprint: { mode: "sprint", lineGoal: 40, gravityScale: 0.1125, gravityMinMs: 10 },
   ultra: { mode: "ultra", timeLimitMs: 120_000, gravityScale: 0.04, gravityMinMs: 45 }, // very fast falls from the start
   daily: { mode: "daily" },
 };
