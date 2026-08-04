@@ -1,6 +1,14 @@
 import { lazy, Suspense, useEffect, type ComponentType, type LazyExoticComponent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useMetaStore, type Screen } from "./state/metaStore";
+import {
+  useMetaStore,
+  navSeed,
+  navIsProgrammaticPop,
+  navCancelPop,
+  navApplyPop,
+  type Screen,
+} from "./state/metaStore";
+import { useGameStore } from "./state/gameStore";
 import i18n, { applyDirection, ensureLanguageLoaded } from "./i18n";
 import { AchievementToast } from "./components/AchievementToast";
 import { useCatalogStore } from "./state/catalogStore";
@@ -36,6 +44,29 @@ export default function App() {
   }, [settings.theme]);
 
   useEffect(() => { void loadCatalogs(); }, [loadCatalogs]);
+
+  // Browser/hardware back button. Mirrors the in-app back arrows: it walks back
+  // through screens, and during active play it opens the pause modal instead of
+  // navigating. At the menu there is nothing behind us, so the app exits.
+  useEffect(() => {
+    navSeed();
+    const onPop = (e: PopStateEvent) => {
+      if (navIsProgrammaticPop()) return;
+
+      const meta = useMetaStore.getState();
+      const game = useGameStore.getState();
+      if (meta.screen === "game" && game.snapshot?.status === "playing") {
+        game.pause();
+        navCancelPop();
+        return;
+      }
+
+      const target = navApplyPop(e.state);
+      if (target) meta.applyHistoryScreen(target);
+    };
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, []);
 
   useEffect(() => {
     void ensureLanguageLoaded(settings.language).finally(() => void i18n.changeLanguage(settings.language));
