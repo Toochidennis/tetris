@@ -74,10 +74,24 @@ export default function App() {
   }, [settings.language, languages]);
 
   return (
-    <div style={{ height: "100dvh", maxWidth: 520, margin: "0 auto", position: "relative", overflow: "hidden", background: "#050816" }}>
+    <div style={{
+      height: "100dvh",
+      maxWidth: 520,
+      margin: "0 auto",
+      position: "relative",
+      overflow: "hidden",
+      background: "#050816",
+    }}>
       {/* No mode="wait": screens crossfade concurrently (both absolutely positioned),
           so the next screen never waits on the previous one's exit to complete.
-          This avoids the layout-animation deadlock and the bg flash between screens. */}
+          This avoids the layout-animation deadlock and the bg flash between screens.
+
+          index.html sets viewport-fit=cover, so screens must keep clear of the
+          notch and gesture bar. The insets live on the screen's own top/bottom
+          offsets, not as padding on the shell: an absolutely positioned box
+          resolves against its ancestor's *padding box*, so shell padding would
+          sit underneath the screen and reserve nothing. Both are 0px on devices
+          without a notch or home indicator, so nothing is given up there. */}
       <AnimatePresence initial={false}>
         <motion.div
           key={screen}
@@ -85,7 +99,13 @@ export default function App() {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -16 }}
           transition={{ duration: settings.reducedMotion ? 0 : 0.26 }}
-          style={{ position: "absolute", inset: 0 }}
+          style={{
+            position: "absolute",
+            top: "env(safe-area-inset-top)",
+            bottom: "env(safe-area-inset-bottom)",
+            left: 0,
+            right: 0,
+          }}
         >
           <Suspense fallback={<ScreenFallback />}>
             <ActiveScreen />

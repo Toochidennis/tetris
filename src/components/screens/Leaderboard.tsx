@@ -241,7 +241,7 @@ function YourPosition({ rank, username, avatar, score, label }: { rank?: number;
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2, type: "spring", stiffness: 240, damping: 22 }}
-      style={{ flexShrink: 0, margin: "8px -14px 0", padding: "10px 16px calc(12px + env(safe-area-inset-bottom))" }}
+      style={{ flexShrink: 0, margin: "8px -14px 0", padding: "10px 16px 12px" }}
     >
       <div style={{ fontSize: 9.5, fontWeight: 800, letterSpacing: 2, color: "#c4b5fd", textAlign: "center", marginBottom: 6, textTransform: "uppercase" }}>
         {label}
