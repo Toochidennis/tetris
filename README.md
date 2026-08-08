@@ -1,69 +1,183 @@
-# BlockFall — Mobile-First HTML5 Tetris (React + TypeScript)
+# BlockFall
 
-A polished, mobile-first Tetris built with a **framework-agnostic TypeScript engine** and a thin React UI layer. This is a **working foundation** — playable end to end — structured so Claude Code can extend it into the full spec without rework.
+BlockFall is a mobile-first HTML5 falling-block puzzle game built with React, TypeScript, Vite, Zustand, Framer Motion, and CSS theming. It includes a standalone TypeScript game engine, multiple play modes, mobile gestures, profile/settings persistence, localization, and PWA assets.
 
-## Run it
+## Live Demo
 
-```bash
-npm install
-npm run dev      # http://localhost:5173
-npm run build    # type-check + production build
+[Play BlockFall](https://blockfall.linkskool.com)
+
+## Overview
+
+This project separates the falling-block game rules from the React UI. The engine handles board state, pieces, scoring, rotation, gravity, and mode rules, while React renders screens, HUD, settings, onboarding, leaderboard UI, and mobile controls.
+
+The app is designed for mobile portrait play first, with keyboard support for desktop testing and play.
+
+## Features
+
+- Mobile-first falling-block puzzle gameplay
+- Pure TypeScript engine with no React dependency
+- 7 tetrominoes, SRS rotation, wall kicks, hold, ghost piece, soft drop, and hard drop
+- 7-bag randomizer with seeded RNG support
+- Scoring with line clears, level progression, combo/back-to-back state, and T-spin handling
+- Marathon, Sprint, Ultra, and Daily mode structure
+- Touch gestures and on-screen controls
+- Keyboard controls for desktop
+- Profile and settings persistence with Zustand/localStorage
+- Mock leaderboard service and local profile service behind service interfaces
+- Theme system using CSS variables
+- Internationalization with locale files and RTL support
+- PWA manifest, icons, sitemap, robots file, and service worker entry
+
+## Tech Stack
+
+- React
+- TypeScript
+- Vite
+- Zustand
+- Framer Motion
+- i18next / react-i18next
+- Tailwind CSS / PostCSS
+- vite-plugin-pwa
+- CSS variables
+- LocalStorage
+
+## Screenshots
+
+Screenshots are not currently committed to the repository.
+
+Recommended additions:
+
+```txt
+docs/screenshots/menu.png
+docs/screenshots/gameplay.png
+docs/screenshots/settings.png
 ```
 
-Open in a mobile viewport (DevTools device toolbar, 375×812) for the intended experience.
+Then reference them here:
+
+```md
+![BlockFall menu screen](docs/screenshots/menu.png)
+![BlockFall gameplay screen](docs/screenshots/gameplay.png)
+![BlockFall settings screen](docs/screenshots/settings.png)
+```
 
 ## Controls
 
-**Touch (on the board):** swipe ◀ ▶ to move · swipe down = soft drop · fast flick down = hard drop · tap = rotate · swipe up = hold. On-screen buttons are also provided.
-**Keyboard:** ← → move · ↓ soft drop · Space hard drop · ↑/X rotate CW · Z rotate CCW · C hold · Esc-style pause via the button.
+### Touch
 
-## Architecture (read before editing)
+- Swipe left/right to move
+- Swipe down for soft drop
+- Fast flick down for hard drop
+- Tap to rotate
+- Swipe up to hold
+- On-screen buttons are also available
 
-- **`src/engine/`** — pure TypeScript, **zero React imports**. All game rules live here and are unit-testable in isolation. The engine is **seed-driven and deterministic** (mulberry32 PRNG) — same seed produces the same piece sequence, which powers daily challenges, replays, and future server-side verification.
-- **`src/state/`** — Zustand stores. `gameStore` runs the rAF tick loop and exposes engine snapshots; `metaStore` holds profile/settings/navigation (persisted to localStorage).
-- **`src/state/services/`** — **data behind interfaces.** `LeaderboardService` and `ProfileService` are interfaces; `MockLeaderboardService` (fake data + simulated realtime) and `LocalProfileService` (localStorage) are the live implementations. **To go to a real backend, write one class implementing the interface and change the two lines in `src/state/services/index.ts` — no UI changes.**
-- **`src/components/`** — the board renders as a **CSS grid of divs** (not canvas), with memoized cells. HUD, screens, and previews live here.
-- **`src/theme/` + `src/index.css`** — all colors are **CSS variables** under `[data-theme="..."]`. Three themes ship: `neon-dark` (default), `classic`, `minimal-light`. Components never use raw hex.
-- **`src/i18n/`** — react-i18next. **English + Arabic (RTL)** ship to prove the pipeline and RTL mirroring; the other 19 languages are registered in `SUPPORTED_LANGS` and need locale JSON files with the same keys.
+### Keyboard
 
-## What's IMPLEMENTED ✅
+- Left/Right: move
+- Down: soft drop
+- Space: hard drop
+- Up or `X`: rotate clockwise
+- `Z`: rotate counter-clockwise
+- `C`: hold
 
-- Full engine: 7 tetrominoes, **SRS rotation + wall kicks** (JLSTZ + I tables), **7-bag** randomizer, gravity with frame-rate-independent accumulator, **lock delay** (500ms, 15-reset cap), **hold**, **ghost piece**, soft/hard drop.
-- Scoring: line points × level, **T-spin detection** (3-corner) + bonuses, **back-to-back**, **combo** counter, level progression every 10 lines.
-- Modes wired: **Marathon** (cap L15), **Sprint** (40 lines), **Ultra** (120s), **Daily** (date-seeded). Marathon is fully playable; Sprint/Ultra end conditions are in the engine.
-- Screens: Splash → Onboarding (username + country, saved to localStorage) → Menu → Mode Select → Game (board + HUD + on-screen controls + pause + game-over with stats) → Leaderboard → Settings.
-- **Leaderboard**: mock data (80 entries/mode), simulated realtime new entries every 30–60s, mode tabs, country flags, your row highlighted + pinned if outside the top 20, score submission from the results screen.
-- **i18n + RTL**: language switch, direction flip for Arabic, locale-aware number formatting.
-- **Theming**: 3 switchable themes via CSS variables.
-- Mobile: touch gestures, on-screen buttons, handedness toggle, portrait layout, `touch-action: none` on the play area.
-- Framer Motion screen transitions + modal springs, with a reduced-motion setting.
+## Architecture
 
-## What's LEFT for Claude Code (next phases) 🔧
+```txt
+src/
+  engine/                 # Pure TypeScript game rules and scoring
+  state/                  # Zustand stores and persistence
+  state/services/         # Leaderboard/profile service interfaces and implementations
+  components/             # Board, HUD, previews, selectors, particles, screen components
+  components/screens/     # Splash, onboarding, menu, mode select, gameplay, settings, leaderboard
+  input/                  # Keyboard and gesture hooks
+  i18n/                   # i18next setup and locale JSON files
+  theme/                  # Theme tokens and CSS variables
+  data/                   # Country/language catalog loading
+  pwa.ts                  # Service worker registration
+```
 
-Hand this repo + the original build brief to Claude Code and work these in order:
+## Getting Started
 
-1. **Remaining 19 locales** — add `src/i18n/locales/<code>.json` for each `SUPPORTED_LANG` (same keys as `en.json`), register them in `src/i18n/index.ts`, and complete RTL files for `he`, `fa`, `ur`.
-2. **Audio** — build `AudioManager` (SFX: move/rotate/lock/clear/tetris/level-up/game-over + music) wired to the volume settings. (No assets bundled — source royalty-free files.)
-3. **Line-clear & effect animations** — flash + collapse on clear, tetris light-sweep + particles, hard-drop trail/shake, combo/B2B/T-spin pop-ups, level-up flourish (timings are specified in the brief).
-4. **Profile screen** — stats, last-10-games sparkline, daily streak, achievement badges grid (engine can emit events for unlocks).
-5. **Achievements + streak system** — ~12 achievements, streak tracking on the profile/menu.
-6. **PWA** — add `vite-plugin-pwa`, manifest, icons, offline support.
-7. **Engine unit tests** — formalize the smoke checks (SRS kicks, line clear, scoring, T-spin, bag distribution) with Vitest.
-8. **DAS/ARR tuning UI** + colorblind patterns + text-size accessibility options.
-9. **Real backend** (optional) — implement `SupabaseLeaderboardService` against the existing interface.
+### Prerequisites
 
-## Key files map
+- Node.js
+- npm
 
-| Concern | File |
-|---|---|
-| Game rules orchestrator | `src/engine/engine.ts` |
-| Piece shapes + SRS kicks | `src/engine/constants.ts` |
-| Seeded RNG | `src/engine/rng.ts` |
-| 7-bag | `src/engine/bag.ts` |
-| Board/collision/clear | `src/engine/board.ts` |
-| Scoring + T-spin | `src/engine/scoring.ts` |
-| Loop + game state | `src/state/gameStore.ts` |
-| Profile/settings/nav | `src/state/metaStore.ts` |
-| Swap backend here | `src/state/services/index.ts` |
-| Board rendering | `src/components/Board.tsx` |
-| Themes/tokens | `src/index.css` |
+### Installation
+
+```bash
+npm install
+```
+
+### Development
+
+```bash
+npm run dev
+```
+
+### Environment Variables
+
+The app can run with local/mock services. If API-backed services are enabled, copy the example file:
+
+```bash
+cp .env.example .env.local
+```
+
+Available variables:
+
+```txt
+VITE_API_BASE_URL
+VITE_API_KEY
+VITE_ASSET_BASE_URL
+```
+
+Do not commit real API keys or production `.env` files.
+
+## Available Scripts
+
+```bash
+npm run dev
+```
+
+Start the Vite development server.
+
+```bash
+npm run build
+```
+
+Type-check and create a production build.
+
+```bash
+npm run preview
+```
+
+Preview the production build locally.
+
+```bash
+npm run typecheck
+```
+
+Run TypeScript checks.
+
+## Deployment
+
+The live project is available at:
+
+[https://blockfall.linkskool.com](https://blockfall.linkskool.com)
+
+This is a static Vite app. Build with:
+
+```bash
+npm run build
+```
+
+Deploy the generated `dist/` folder to a static hosting provider.
+
+## Future Improvements
+
+- Add committed screenshots or a short gameplay GIF
+- Add automated CI for build/typecheck
+- Add unit tests around key engine rules if not already covered by the local test strategy
+- Review production API configuration before public releases
+- Add code splitting if bundle size becomes a concern
