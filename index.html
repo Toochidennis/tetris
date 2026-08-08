@@ -1,9 +1,14 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Core document setup. Keep charset first, and keep viewport tuned for the mobile game canvas. -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+
+    <!-- Primary SEO description shown by search engines when they choose not to generate their own snippet. -->
     <meta name="description" content="Play BlockFall, a fast mobile-first falling block puzzle game with marathon, sprint, ultra, daily challenges, achievements, and leaderboards." />
+
+    <!-- PWA and mobile install metadata. These help Android/iOS label and launch the installed app correctly. -->
     <meta name="application-name" content="BlockFall" />
     <meta name="apple-mobile-web-app-title" content="BlockFall" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -11,29 +16,37 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="theme-color" content="#0A0A0F" />
     <meta name="color-scheme" content="dark light" />
-    <link rel="canonical" href="https://blockfall.app/" />
+
+    <!-- Canonical URL and install assets. -->
+    <link rel="canonical" href="https://blockfall.linkskool.com/" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+
+    <!-- Open Graph metadata controls previews on Facebook, WhatsApp, Discord, LinkedIn, and many chat apps. -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="BlockFall" />
     <meta property="og:title" content="BlockFall - Mobile Tetris Puzzle Game" />
     <meta property="og:description" content="Stack, clear, and chase high scores in a polished mobile-first falling block puzzle game." />
-    <meta property="og:url" content="https://blockfall.linkskool.com" />
+    <meta property="og:url" content="https://blockfall.linkskool.com/" />
     <meta property="og:image" content="https://blockfall.linkskool.com/og-image.jpg" />
     <meta property="og:image:width" content="1254" />
     <meta property="og:image:height" content="1254" />
     <meta property="og:image:alt" content="BlockFall game logo with colorful falling blocks." />
+
+    <!-- Twitter/X card metadata. Uses the same preview image but Twitter reads these name=twitter:* tags. -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="BlockFall - Mobile Tetris Puzzle Game" />
     <meta name="twitter:description" content="Stack, clear, and chase high scores in a polished mobile-first falling block puzzle game." />
     <meta name="twitter:image" content="https://blockfall.linkskool.com/og-image.jpg" />
+
+    <!-- JSON-LD structured data gives crawlers a machine-readable description of the game. -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "VideoGame",
         "name": "BlockFall",
-        "url": "https://blockfall.linkskool.com",
+        "url": "https://blockfall.linkskool.com/",
         "image": "https://blockfall.linkskool.com/og-image.jpg",
         "description": "A fast, mobile-first falling block puzzle game with marathon, sprint, ultra, daily challenges, achievements, and leaderboards.",
         "applicationCategory": "Game",
@@ -43,11 +56,18 @@
         "genre": ["Puzzle", "Arcade"]
       }
     </script>
+
+    <!-- Browser tab title and the default title used by many crawlers. -->
     <title>BlockFall - Mobile Tetris Puzzle Game</title>
   </head>
   <body>
+    <!-- Fallback for users and crawlers that do not execute JavaScript. -->
     <noscript>BlockFall needs JavaScript enabled to run the playable puzzle game.</noscript>
+
+    <!-- React mounts the full game UI into this root element. -->
     <div id="root"></div>
+
+    <!-- Vite entry point. In production this is replaced by hashed built assets. -->
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

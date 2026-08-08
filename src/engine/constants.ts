@@ -5,7 +5,11 @@ export const ROWS = 20;
 export const SPAWN_COL = 3;
 export const SPAWN_ROW = 0;
 
+// Lock delay shrinks as levels climb. A flat delay would come to dominate each
+// piece once gravity is fast, making the game feel slower the further you get.
 export const LOCK_DELAY_MS = 500;
+export const LOCK_DELAY_MIN_MS = 150;
+export const LOCK_DELAY_STEP_MS = 40; // subtracted per level
 export const MAX_LOCK_RESETS = 15;
 export const CLEAR_DELAY_MS = 300;
 export const LINES_PER_LEVEL = 10;

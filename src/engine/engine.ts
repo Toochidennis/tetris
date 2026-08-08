@@ -15,6 +15,8 @@ import {
   KICKS_JLSTZ,
   LINES_PER_LEVEL,
   LOCK_DELAY_MS,
+  LOCK_DELAY_MIN_MS,
+  LOCK_DELAY_STEP_MS,
   CLEAR_DELAY_MS,
   GRAVITY_MIN_MS,
   MAX_LOCK_RESETS,
@@ -125,13 +127,23 @@ export class TetrisEngine {
     if (this.status === "paused") this.status = "playing";
   }
 
-  private gravityIntervalMs(): number {
-    // Smooth, line-by-line ramp: a *fractional* level grows with every cleared
-    // line (not just every 10), so gravity climbs bit by bit. Clamped to the
-    // mode's level cap (Marathon plateaus at 15; Sprint/Ultra keep climbing),
-    // and floored so it never becomes literally instant.
+  // Fractional level: grows with every cleared line (not just every 10) so the
+  // difficulty curves climb bit by bit. Clamped to the mode's level cap
+  // (Marathon plateaus at 15; Sprint/Ultra keep climbing).
+  private fracLevel(): number {
     const cap = this.config.levelCap ?? Infinity;
-    const fracLevel = Math.min(cap + 0.999, 1 + this.score.lines / LINES_PER_LEVEL);
+    return Math.min(cap + 0.999, 1 + this.score.lines / LINES_PER_LEVEL);
+  }
+
+  // Lock delay tapers with level so it never dwarfs the fall itself.
+  private lockDelayMs(): number {
+    const taper = LOCK_DELAY_MS - (this.fracLevel() - 1) * LOCK_DELAY_STEP_MS;
+    return Math.max(LOCK_DELAY_MIN_MS, taper);
+  }
+
+  private gravityIntervalMs(): number {
+    // Smooth, line-by-line ramp, floored so it never becomes literally instant.
+    const fracLevel = this.fracLevel();
     const decay = Math.max(0.05, 0.8 - (fracLevel - 1) * 0.007);
     const seconds = Math.pow(decay, fracLevel - 1);
     const interval = seconds * 1000 * (this.config.gravityScale ?? 1);
@@ -219,7 +231,7 @@ export class TetrisEngine {
       // grounded: run lock delay
       this.grounded = true;
       this.lockAcc += dtMs;
-      if (this.lockAcc >= LOCK_DELAY_MS) {
+      if (this.lockAcc >= this.lockDelayMs()) {
         this.lockActive();
       }
     }
@@ -419,8 +431,10 @@ export class TetrisEngine {
 }
 
 export const MODE_CONFIGS: Record<GameMode, ModeConfig> = {
-  marathon: { mode: "marathon", levelCap: 15 },
-  sprint: { mode: "sprint", lineGoal: 40 },
+  // Gravity scaled so level 1 starts at ~112ms/row (2.5x slower than ultra).
+  // The floor scales by the same factor, so the level ramp keeps its shape.
+  marathon: { mode: "marathon", levelCap: 15, gravityScale: 0.1125, gravityMinMs: 10 },
+  sprint: { mode: "sprint", lineGoal: 40, gravityScale: 0.1125, gravityMinMs: 10 },
   ultra: { mode: "ultra", timeLimitMs: 120_000, gravityScale: 0.04, gravityMinMs: 45 }, // very fast falls from the start
   daily: { mode: "daily" },
 };

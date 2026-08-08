@@ -97,9 +97,11 @@ export function Game() {
         <Hud snap={snap} />
       </div>
 
-      {/* Board area: board is full width, top-anchored right under the HUD.
-          Height comes from the 10:20 ratio, so the field is large; any overflow
-          clips at the bottom of the screen. */}
+      {/* Board area: the field spans the full width and fills the space left
+          under the HUD, resting on the bottom. Cells stretch to fit rather than
+          holding a 1:2 ratio — width is the priority. The screen already clears
+          the gesture bar (see App.tsx); the few px below keep the board's border
+          and rounded corners off the clip edge, where they would be shaved. */}
       <div
         ref={boardRef}
         style={{
@@ -107,9 +109,10 @@ export function Game() {
           zIndex: 1,
           flex: 1,
           minHeight: 0,
+          paddingBottom: 7,
           display: "flex",
           justifyContent: "center",
-          alignItems: "flex-start",
+          alignItems: "flex-end",
           touchAction: "none",
         }}
       >

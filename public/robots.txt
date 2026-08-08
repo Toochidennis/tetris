@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://blockfall.app/sitemap.xml
+Sitemap: https://blockfall.linkskool.com/sitemap.xml
