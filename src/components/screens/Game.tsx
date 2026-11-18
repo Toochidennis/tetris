@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { useGameStore } from "../../state/gameStore";
@@ -10,6 +10,7 @@ import { Hud } from "../Hud";
 import { ScorePopup } from "../ScorePopup";
 import { ParticleField } from "../ParticleField";
 import { leaderboardService } from "../../state/services";
+import { nativeGameAds } from "../../ads/nativeGameAds";
 
 function IconBtn({ children, onClick, label }: { children: React.ReactNode; onClick: () => void; label: string }) {
   return (
@@ -32,13 +33,25 @@ function IconBtn({ children, onClick, label }: { children: React.ReactNode; onCl
   );
 }
 
+function VideoIcon() {
+  return (
+    <svg aria-hidden="true" width="18" height="14" viewBox="0 0 18 14" fill="none" style={{ flexShrink: 0 }}>
+      <rect x="1" y="1" width="11" height="12" rx="2" stroke="currentColor" strokeWidth="1.8" />
+      <path d="m12 4 5-2v10l-5-2" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export function Game() {
   const { t } = useTranslation();
   const snap = useGameStore((s) => s.snapshot);
-  const { pause, resume, restart, getSummary } = useGameStore();
-  const { setScreen, settings, profile, recordGame, selectedMode } = useMetaStore();
+  const { pause, resume, restart, getSummary, continueAfterReward } = useGameStore();
+  const { setScreen, settings, profile, recordGame } = useMetaStore();
   const boardRef = useRef<HTMLDivElement>(null);
   const [isNewRecord, setIsNewRecord] = useState(false);
+  const [adCapabilities, setAdCapabilities] = useState(nativeGameAds.capabilities);
+  const [adAction, setAdAction] = useState<"retry" | "reward" | null>(null);
+  const [adMessage, setAdMessage] = useState<string | null>(null);
   const recorded = useRef(false);
 
   useKeyboard(true);
@@ -46,29 +59,91 @@ export function Game() {
 
   const over = snap?.status === "over";
   const paused = snap?.status === "paused";
+  const canOfferRescue = Boolean(
+    snap?.status === "over" &&
+    snap.mode === "marathon" &&
+    snap.rescueAvailable &&
+    !snap.assisted &&
+    !recorded.current &&
+    adCapabilities.ready &&
+    adCapabilities.enabled &&
+    adCapabilities.placements.includes("marathon_continue"),
+  );
 
-  // On game over: record stats + silently submit the score (once).
+  useEffect(() => nativeGameAds.subscribe(setAdCapabilities), []);
+
+  const finalizeRun = useCallback(() => {
+    if (recorded.current) return;
+    const summary = getSummary();
+    if (!summary) return;
+    recorded.current = true;
+
+    const assisted = summary.assisted === true;
+    const prevBest = profile?.bestScores[summary.mode] ?? 0;
+    setIsNewRecord(!assisted && prevBest > 0 && summary.score > prevBest);
+    if (assisted) return;
+
+    recordGame(summary);
+    if (profile) {
+      leaderboardService
+        .submit({
+          username: profile.username,
+          countryCode: profile.countryCode,
+          avatarId: profile.avatarId,
+          score: summary.score,
+          mode: summary.mode,
+        })
+        .catch(() => { /* offline-tolerant; score is saved locally regardless */ });
+    }
+  }, [getSummary, profile, recordGame]);
+
+  const retry = async () => {
+    if (adAction) return;
+    finalizeRun();
+    setAdMessage(null);
+    setAdAction("retry");
+    try {
+      await nativeGameAds.requestRetryInterstitial();
+    } catch {
+      // Retry remains available if the native ad bridge fails.
+    } finally {
+      setAdAction(null);
+      recorded.current = false;
+      setIsNewRecord(false);
+      restart();
+    }
+  };
+
+  const continueWithReward = async () => {
+    if (!canOfferRescue || adAction) return;
+    setAdMessage(null);
+    setAdAction("reward");
+    try {
+      const outcome = await nativeGameAds.requestRewarded("marathon_continue");
+      if (outcome === "earned") {
+        if (continueAfterReward()) {
+          setIsNewRecord(false);
+        } else {
+          finalizeRun();
+          setAdMessage(t("results.runContinueUnavailable"));
+        }
+      } else {
+        setAdMessage(t("results.continueUnavailable"));
+      }
+    } catch {
+      setAdMessage(t("results.continueUnavailable"));
+    } finally {
+      setAdAction(null);
+    }
+  };
+
+  // Keep a rescuable Marathon result open until the player chooses an action.
   useEffect(() => {
     if (over && snap && !recorded.current) {
-      recorded.current = true;
-      // Compare against the PREVIOUS best (before recordGame updates it).
-      const prevBest = profile?.bestScores[selectedMode] ?? 0;
-      setIsNewRecord(prevBest > 0 && snap.scoreState.score > prevBest);
-      const summary = getSummary();
-      if (summary) recordGame(summary);
-      if (profile) {
-        leaderboardService
-          .submit({
-            username: profile.username,
-            countryCode: profile.countryCode,
-            avatarId: profile.avatarId,
-            score: snap.scoreState.score,
-            mode: selectedMode,
-          })
-          .catch(() => { /* offline-tolerant; score is saved locally regardless */ });
-      }
+      if (canOfferRescue) return;
+      finalizeRun();
     }
-  }, [over, snap, recordGame, getSummary, profile, selectedMode]);
+  }, [over, snap, canOfferRescue, finalizeRun]);
 
   if (!snap) return null;
 
@@ -89,7 +164,7 @@ export function Game() {
         flexShrink: 0,
       }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <IconBtn label={t("common.back", "Back")} onClick={() => setScreen("menu")}>←</IconBtn>
+          <IconBtn label={t("common.back", "Back")} onClick={() => { if (over) finalizeRun(); setScreen("menu"); }}>←</IconBtn>
           <IconBtn label={paused ? t("game.resume") : t("game.pause")} onClick={() => (paused ? resume() : pause())}>
             {paused ? "▶" : "❚❚"}
           </IconBtn>
@@ -140,13 +215,38 @@ export function Game() {
               <Stat k={t("results.time")} v={`${Math.floor(snap.elapsedMs / 1000)}s`} color="#22C55E" />
             </div>
 
-            <button className="btn btn-primary" onClick={() => { recorded.current = false; setIsNewRecord(false); restart(); }} style={{ width: "100%" }}>
-              {t("results.retry")}
+            {canOfferRescue && (
+              <>
+                <div style={{ color: "rgba(255,255,255,0.8)", fontSize: 12, lineHeight: 1.45, textAlign: "center" }}>
+                  {t("results.continueVideoHint")}
+                </div>
+                <button
+                  className="btn"
+                  onClick={continueWithReward}
+                  disabled={adAction !== null}
+                  aria-label={t("results.continueWithVideoLabel")}
+                  style={{ width: "100%", display: "inline-flex", justifyContent: "center", alignItems: "center", gap: 8 }}
+                >
+                  <VideoIcon />
+                  <span>{adAction === "reward" ? t("results.preparing") : t("results.continue")}</span>
+                </button>
+              </>
+            )}
+            {adMessage && <div role="status" style={{ color: "#FCD34D", fontSize: 12, textAlign: "center" }}>{adMessage}</div>}
+            <button
+              className="btn btn-primary"
+              onClick={retry}
+              disabled={adAction !== null}
+              aria-label={adCapabilities.ready && adCapabilities.interstitialBreaks ? t("results.retryWithVideoLabel") : undefined}
+              style={{ width: "100%", display: "inline-flex", justifyContent: "center", alignItems: "center", gap: 8 }}
+            >
+              {adCapabilities.ready && adCapabilities.interstitialBreaks && <VideoIcon />}
+              <span>{adAction === "retry" ? t("results.retryPreparing") : t("results.retry")}</span>
             </button>
-            <button className="btn" onClick={() => setScreen("leaderboard")} style={{ width: "100%" }}>
+            <button className="btn" onClick={() => { finalizeRun(); setScreen("leaderboard"); }} disabled={adAction !== null} style={{ width: "100%" }}>
               {t("leaderboard.title")}
             </button>
-            <button className="btn" onClick={() => setScreen("menu")} style={{ width: "100%" }}>{t("results.menu")}</button>
+            <button className="btn" onClick={() => { finalizeRun(); setScreen("menu"); }} disabled={adAction !== null} style={{ width: "100%" }}>{t("results.menu")}</button>
           </Overlay>
         )}
       </AnimatePresence>

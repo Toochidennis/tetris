@@ -39,6 +39,7 @@ export interface GameSummary {
   tSpins: number; // any T-spin
   maxCombo: number; // longest chain of consecutive line-clearing locks
   finishedGoal: boolean; // mode objective met (e.g. Sprint 40 lines)
+  assisted?: boolean; // rewarded rescue runs are excluded from ranked stats
 }
 
 export interface GameSnapshot {
@@ -54,6 +55,8 @@ export interface GameSnapshot {
   scoreState: ScoreState;
   lastClear: ClearEvent | null;
   clearingRows: number[] | null; // rows mid-flash, not yet removed from board
+  rescueAvailable: boolean;
+  assisted: boolean;
 }
 
 export interface ClearEvent {

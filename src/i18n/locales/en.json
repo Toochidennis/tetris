@@ -40,6 +40,14 @@
     "submit": "Submit Score",
     "submitted": "Submitted!",
     "retry": "Retry",
+    "retryWithVideoLabel": "Retry; a video may play first.",
+    "retryPreparing": "Preparing retry...",
+    "continue": "Continue",
+    "continueWithVideoLabel": "Continue with a video",
+    "continueVideoHint": "Undo your last placement and continue once in Marathon.",
+    "preparing": "Preparing...",
+    "continueUnavailable": "That continue option isn't available right now. You can still retry.",
+    "runContinueUnavailable": "This run can't continue right now. You can still retry.",
     "menu": "Menu"
   },
   "leaderboard": {

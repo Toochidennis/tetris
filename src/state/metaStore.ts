@@ -224,6 +224,9 @@ export const useMetaStore = create<MetaStore>((set, get) => ({
   },
 
   recordGame: (summary) => {
+    // A rewarded rescue can continue play, but assisted scores do not affect
+    // personal bests, achievements, streaks, or competitive totals.
+    if (summary.assisted) return;
     const p = get().profile;
     if (!p) return;
     const { mode, score, lines } = summary;

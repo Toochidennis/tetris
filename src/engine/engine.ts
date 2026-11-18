@@ -45,6 +45,27 @@ export interface ModeConfig {
   gravityMinMs?: number; // fastest fall interval for this mode; default GRAVITY_MIN_MS
 }
 
+interface PieceStartStats {
+  score: ScoreState;
+  tetrises: number;
+  tSpins: number;
+  maxCombo: number;
+  goalReached: boolean;
+}
+
+interface RescueCheckpoint {
+  board: BoardCell[][];
+  active: ActivePiece;
+  hold: PieceType | null;
+  score: ScoreState;
+  tetrises: number;
+  tSpins: number;
+  maxCombo: number;
+  goalReached: boolean;
+}
+
+type RescueCandidate = Omit<RescueCheckpoint, "active">;
+
 const NEXT_QUEUE_SIZE = 5;
 
 export class TetrisEngine {
@@ -82,6 +103,10 @@ export class TetrisEngine {
   };
   private lastClear: ClearEvent | null = null;
   private seed: number;
+  private pieceStartStats: PieceStartStats | null = null;
+  private pendingRescueCandidate: RescueCandidate | null = null;
+  private rescueCheckpoint: RescueCheckpoint | null = null;
+  private usedRescue = false;
 
   constructor(config: ModeConfig, seed: number) {
     this.config = config;
@@ -116,6 +141,10 @@ export class TetrisEngine {
     this.tSpins = 0;
     this.maxCombo = 0;
     this.goalReached = false;
+    this.pieceStartStats = null;
+    this.pendingRescueCandidate = null;
+    this.rescueCheckpoint = null;
+    this.usedRescue = false;
     this.status = "playing";
     this.spawn();
   }
@@ -150,7 +179,17 @@ export class TetrisEngine {
     return Math.max(this.config.gravityMinMs ?? GRAVITY_MIN_MS, interval);
   }
 
-  private spawn(fromHold = false) {
+  private rememberPieceStart() {
+    this.pieceStartStats = {
+      score: { ...this.score },
+      tetrises: this.tetrises,
+      tSpins: this.tSpins,
+      maxCombo: this.maxCombo,
+      goalReached: this.goalReached,
+    };
+  }
+
+  private spawn(fromHold = false): PieceType {
     const type = fromHold ? this.hold! : this.bag.next();
     const piece: ActivePiece = {
       type,
@@ -162,7 +201,7 @@ export class TetrisEngine {
       // top out
       this.active = null;
       this.status = "over";
-      return;
+      return type;
     }
     this.active = piece;
     this.grounded = false;
@@ -170,6 +209,8 @@ export class TetrisEngine {
     this.lockResets = 0;
     this.rotatedLast = false;
     if (!fromHold) this.canHold = true;
+    this.rememberPieceStart();
+    return type;
   }
 
   // Main time step.
@@ -191,7 +232,10 @@ export class TetrisEngine {
         this.board = clearRows(this.board, this.clearingRows);
         this.clearingRows = null;
         this.clearAcc = 0;
-        this.spawn();
+        const rescueCandidate = this.pendingRescueCandidate;
+        this.pendingRescueCandidate = null;
+        const nextType = this.spawn();
+        this.considerRescue(rescueCandidate, nextType);
       }
       return;
     }
@@ -309,6 +353,7 @@ export class TetrisEngine {
       this.grounded = false;
       this.lockAcc = 0;
       this.lockResets = 0;
+      this.rememberPieceStart();
     }
     this.canHold = false;
   }
@@ -322,6 +367,28 @@ export class TetrisEngine {
 
   private lockActive() {
     if (!this.active) return;
+    const boardBeforeLock = this.board.map((row) => row.slice());
+    const pieceStart = this.pieceStartStats ?? {
+      score: { ...this.score },
+      tetrises: this.tetrises,
+      tSpins: this.tSpins,
+      maxCombo: this.maxCombo,
+      goalReached: this.goalReached,
+    };
+    const rescueCandidate: RescueCandidate | null =
+      this.mode === "marathon" && !this.usedRescue
+        ? {
+            board: boardBeforeLock,
+            hold: this.hold,
+            score: { ...pieceStart.score },
+            tetrises: pieceStart.tetrises,
+            tSpins: pieceStart.tSpins,
+            maxCombo: pieceStart.maxCombo,
+            goalReached: pieceStart.goalReached,
+          }
+        : null;
+    this.pendingRescueCandidate = null;
+    this.rescueCheckpoint = null;
     const tSpin = detectTSpin(this.board, this.active, this.rotatedLast);
     this.board = lockPiece(this.board, this.active);
     this.score.piecesPlaced += 1;
@@ -379,13 +446,65 @@ export class TetrisEngine {
         return;
       }
       // Start clearing phase — rows flash before being removed
+      this.pendingRescueCandidate = rescueCandidate;
       this.clearingRows = rows;
       this.clearAcc = 0;
       this.active = null;
     } else {
       this.lastClear = null;
-      this.spawn();
+      const nextType = this.spawn();
+      this.considerRescue(rescueCandidate, nextType);
     }
+  }
+
+  private considerRescue(
+    candidate: RescueCandidate | null,
+    nextType: PieceType,
+  ) {
+    // Undo the last placement only when its removal makes the next piece
+    // spawnable. The failed piece itself is discarded from the bag draw.
+    if (
+      !candidate ||
+      this.mode !== "marathon" ||
+      this.usedRescue ||
+      this.status !== "over" ||
+      !isValid(candidate.board, nextType, 0, SPAWN_ROW, SPAWN_COL)
+    ) {
+      return;
+    }
+    this.rescueCheckpoint = {
+      ...candidate,
+      active: { type: nextType, rotation: 0, row: SPAWN_ROW, col: SPAWN_COL },
+    };
+  }
+
+  continueFromRescue(): boolean {
+    const checkpoint = this.rescueCheckpoint;
+    if (this.status !== "over" || this.usedRescue || !checkpoint) return false;
+
+    this.board = checkpoint.board.map((row) => row.slice());
+    this.active = { ...checkpoint.active };
+    this.hold = checkpoint.hold;
+    this.canHold = true;
+    this.score = { ...checkpoint.score };
+    this.tetrises = checkpoint.tetrises;
+    this.tSpins = checkpoint.tSpins;
+    this.maxCombo = checkpoint.maxCombo;
+    this.goalReached = checkpoint.goalReached;
+    this.status = "playing";
+    this.gravityAcc = 0;
+    this.lockAcc = 0;
+    this.lockResets = 0;
+    this.grounded = false;
+    this.rotatedLast = false;
+    this.clearingRows = null;
+    this.clearAcc = 0;
+    this.lastClear = null;
+    this.pendingRescueCandidate = null;
+    this.rescueCheckpoint = null;
+    this.usedRescue = true;
+    this.rememberPieceStart();
+    return true;
   }
 
   // Build an immutable-ish snapshot for the UI layer.
@@ -407,6 +526,9 @@ export class TetrisEngine {
       scoreState: { ...this.score },
       lastClear: this.lastClear,
       clearingRows: this.clearingRows ? [...this.clearingRows] : null,
+      rescueAvailable:
+        this.status === "over" && !this.usedRescue && this.rescueCheckpoint !== null,
+      assisted: this.usedRescue,
     };
   }
 
@@ -426,6 +548,7 @@ export class TetrisEngine {
       tSpins: this.tSpins,
       maxCombo: this.maxCombo,
       finishedGoal: this.goalReached,
+      assisted: this.usedRescue,
     };
   }
 }

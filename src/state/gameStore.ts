@@ -10,6 +10,7 @@ interface GameStore {
   pause: () => void;
   resume: () => void;
   restart: () => void;
+  continueAfterReward: () => boolean;
   getSummary: () => GameSummary | null;
   // input intents
   move: (dir: -1 | 1) => void;
@@ -89,6 +90,14 @@ export const useGameStore = create<GameStore>((set, get) => {
     restart: () => {
       const { _mode, _seed } = get();
       if (_mode) get().start(_mode, _mode === "daily" ? _seed : undefined);
+    },
+
+    continueAfterReward: () => {
+      const engine = get().engine;
+      if (!engine?.continueFromRescue()) return false;
+      get()._sync();
+      startLoop();
+      return true;
     },
 
     getSummary: () => get().engine?.summary() ?? null,
